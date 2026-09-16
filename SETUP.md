@@ -125,6 +125,7 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
       "github": "https://github.com/sagarkrjha",
       "linkedin": "https://linkedin.com/in/devsagarkumarjha",
       "twitter": "https://x.com/devsagarkrjha",
+      "leetcode": "https://leetcode.com/u/devsagarkrjha/",
       "instagram": "", // Leave empty string "" to hide from README
       "youtube": "",   // Leave empty string "" to hide from README
       "discord": "",   // Leave empty string "" to hide from README
@@ -138,6 +139,7 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
     "featured_projects": true,
     "tech_stack": true,
     "metrics": true,
+    "leetcode": true,
     "achievements": true,
     "interests": true,
     "footer": true
@@ -161,10 +163,18 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
     }
   },
   "display_options": {
+    "stats_base_url": "https://github-readme-stats-fast.vercel.app", // Endpoint for stats & language cards
     "stats_theme": "tokyonight", // Theme for GitHub stats card
     "hide_stats_border": true,
     "show_stats_card": true,
-    "show_langs_card": true
+    "show_langs_card": true,
+    "show_streak_card": false
+  },
+  "leetcode": {
+    "username": "devsagarkrjha", // LeetCode handle
+    "theme": "dark",             // Theme for LeetCode contest rating card
+    "show_table": true,          // Display live summary metrics table
+    "show_card": true            // Display interactive contest rating SVG card
   }
 }
 ```

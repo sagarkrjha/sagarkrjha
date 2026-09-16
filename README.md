@@ -3,7 +3,7 @@
 # Sagar Kumar Jha
 ### Aspiring Software Engineer · Systems & Developer Tooling
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/devsagarkumarjha)&nbsp;&nbsp;[![X (Twitter)](https://img.shields.io/badge/X%20(Twitter)-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/devsagarkrjha)&nbsp;&nbsp;[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/sagarkrjha)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/devsagarkumarjha)&nbsp;&nbsp;[![X (Twitter)](https://img.shields.io/badge/X%20(Twitter)-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/devsagarkrjha)&nbsp;&nbsp;[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/sagarkrjha)&nbsp;&nbsp;[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=black)](https://leetcode.com/u/devsagarkrjha/)
 
 </div>
 
@@ -67,8 +67,26 @@ Supported by real repository code and active systems development:
 <br />
 
 <a href="https://github.com/sagarkrjha">
-  <img height="165em" src="https://github-readme-stats.vercel.app/api?username=sagarkrjha&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false" alt="Sagar Kumar Jha's GitHub Stats" />
-  <img height="165em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sagarkrjha&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" />
+  <img height="165" src="https://github-readme-stats-fast.vercel.app/api?username=sagarkrjha&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false" alt="Sagar Kumar Jha's GitHub Stats" />
+  <img height="165" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=sagarkrjha&layout=compact&theme=tokyonight&hide_border=true&exclude_repo=sagarkrjha" alt="Top Languages" />
+</a>
+
+</div>
+
+## ⚔️ Algorithmic & LeetCode Metrics
+
+<div align="center">
+
+| Metric | Value | Metric | Value |
+| :--- | :---: | :--- | :---: |
+| **Contest Rating** | `2115` (Top 1.46%) | **Global Contest Rank** | `12,305 / 882,088` |
+| **Problems Solved** | `688` | **Badge** | `Knight ⚔️` |
+| **Hard Solved** | `143` | **Medium Solved** | `346` |
+
+<br />
+
+<a href="https://leetcode.com/u/devsagarkrjha/">
+  <img height="340" src="https://leetcard.jacoblin.cool/devsagarkrjha?ext=contest&theme=dark" alt="Sagar Kumar Jha's LeetCode Stats" />
 </a>
 
 </div>
@@ -77,6 +95,8 @@ Supported by real repository code and active systems development:
 
 - Shipped **MiniGit v1.0.0**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.0.0))
+- Achieved **LeetCode Knight** · **2115 Contest Rating** (Top 1.46% globally)
+  *Solved **688+ algorithmic problems** (143 Hard, 346 Medium) with a peak contest rating of **2115**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **5+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
@@ -90,6 +110,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-16 04:27 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-16 04:50 UTC`*
 
 </div>

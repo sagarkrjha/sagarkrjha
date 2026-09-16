@@ -10,6 +10,7 @@
       "github": "https://github.com/sagarkrjha",
       "linkedin": "https://linkedin.com/in/devsagarkumarjha",
       "twitter": "https://x.com/devsagarkrjha",
+      "leetcode": "https://leetcode.com/u/devsagarkrjha/",
       "instagram": "",
       "youtube": "",
       "discord": "",
@@ -23,6 +24,7 @@
     "featured_projects": true,
     "tech_stack": true,
     "metrics": true,
+    "leetcode": true,
     "achievements": true,
     "interests": true,
     "footer": true
@@ -75,10 +77,17 @@
     ]
   },
   "display_options": {
+    "stats_base_url": "https://github-readme-stats-fast.vercel.app",
     "stats_theme": "tokyonight",
     "hide_stats_border": true,
     "show_stats_card": true,
     "show_langs_card": true,
     "show_streak_card": false
+  },
+  "leetcode": {
+    "username": "devsagarkrjha",
+    "theme": "dark",
+    "show_table": true,
+    "show_card": true
   }
 }

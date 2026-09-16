@@ -96,6 +96,96 @@ function formatDate(isoString) {
 }
 
 /**
+ * Helper to fetch public LeetCode statistics & contest rankings
+ */
+async function fetchLeetCode(username) {
+  if (!username) return null;
+
+  const query = `query userProfile($username: String!) {
+    matchedUser(username: $username) {
+      profile {
+        ranking
+      }
+      submitStats {
+        acSubmissionNum {
+          difficulty
+          count
+        }
+      }
+    }
+    userContestRanking(username: $username) {
+      attendedContestsCount
+      rating
+      globalRanking
+      totalParticipants
+      topPercentage
+      badge {
+        name
+      }
+    }
+  }`;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const res = await fetch('https://leetcode.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'sagarkrjha-profile-updater/1.0',
+        'Referer': 'https://leetcode.com'
+      },
+      body: JSON.stringify({ query, variables: { username } }),
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+
+    if (!res.ok) {
+      throw new Error(`LeetCode GraphQL HTTP ${res.status}: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    if (data.errors && data.errors.length > 0) {
+      throw new Error(`LeetCode GraphQL Error: ${data.errors[0].message}`);
+    }
+
+    const matchedUser = data?.data?.matchedUser;
+    const contest = data?.data?.userContestRanking;
+
+    if (!matchedUser) {
+      throw new Error(`LeetCode user not found: @${username}`);
+    }
+
+    const submissions = matchedUser.submitStats?.acSubmissionNum || [];
+    const totalSolved = submissions.find(s => s.difficulty === 'All')?.count || 0;
+    const easySolved = submissions.find(s => s.difficulty === 'Easy')?.count || 0;
+    const mediumSolved = submissions.find(s => s.difficulty === 'Medium')?.count || 0;
+    const hardSolved = submissions.find(s => s.difficulty === 'Hard')?.count || 0;
+
+    return {
+      username,
+      ranking: matchedUser.profile?.ranking || null,
+      totalSolved,
+      easySolved,
+      mediumSolved,
+      hardSolved,
+      contestRating: contest ? Math.round(contest.rating) : null,
+      exactRating: contest ? contest.rating : null,
+      contestRanking: contest?.globalRanking || null,
+      totalParticipants: contest?.totalParticipants || null,
+      topPercentage: contest?.topPercentage || null,
+      attendedContests: contest?.attendedContestsCount || 0,
+      badge: contest?.badge?.name || null
+    };
+  } catch (err) {
+    clearTimeout(timeout);
+    console.warn(`⚠️  Failed to fetch LeetCode data for @${username}: ${err.message}`);
+    return null;
+  }
+}
+
+/**
  * Main generator logic
  */
 async function run() {
@@ -208,6 +298,29 @@ async function run() {
       });
     }
   }
+
+  // 3. Fetch LeetCode stats (if enabled)
+  let leetcodeData = null;
+  const lcUsername = config.leetcode?.username || 'devsagarkrjha';
+  if (config.sections?.leetcode !== false && lcUsername) {
+    console.log(`📡 Fetching LeetCode data for @${lcUsername}...`);
+    leetcodeData = await fetchLeetCode(lcUsername);
+    if (leetcodeData) {
+      console.log(`  ↳ LeetCode Solved: ${leetcodeData.totalSolved}, Rating: ${leetcodeData.contestRating || 'N/A'}`);
+    }
+  }
+
+  if (leetcodeData && leetcodeData.contestRating) {
+    const badgeName = leetcodeData.badge ? `LeetCode ${leetcodeData.badge}` : 'LeetCode Competitive Programmer';
+    const topPercentStr = leetcodeData.topPercentage ? ` (Top ${leetcodeData.topPercentage}% globally)` : '';
+    achievements.push({
+      type: 'leetcode',
+      title: `Achieved **${badgeName}** · **${leetcodeData.contestRating} Contest Rating**${topPercentStr}`,
+      description: `Solved **${leetcodeData.totalSolved}+ algorithmic problems** (${leetcodeData.hardSolved} Hard, ${leetcodeData.mediumSolved} Medium) with a peak contest rating of **${leetcodeData.contestRating}**.`,
+      link: `https://leetcode.com/u/${lcUsername}/`
+    });
+  }
+
   if (totalStars >= 5) {
     achievements.push({
       type: 'stars',
@@ -217,7 +330,7 @@ async function run() {
     });
   }
 
-  // 3. Assemble Markdown sections
+  // 4. Assemble Markdown sections
   console.log('📝 Assembling README markdown...');
   const markdown = buildMarkdown({
     config,
@@ -227,7 +340,8 @@ async function run() {
     languageBytes,
     featuredProjects,
     activeRepo,
-    achievements
+    achievements,
+    leetcodeData
   });
 
   // 4. Change detection
@@ -267,7 +381,7 @@ async function run() {
 /**
  * Builds the complete Markdown string from fetched data
  */
-function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, featuredProjects, activeRepo, achievements }) {
+function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, featuredProjects, activeRepo, achievements, leetcodeData }) {
   const p = config.profile;
   const s = config.sections;
   const parts = [];
@@ -283,6 +397,9 @@ function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, fe
     }
     if (p.socials.github) {
       socialBadges.push(`[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](${p.socials.github})`);
+    }
+    if (p.socials.leetcode) {
+      socialBadges.push(`[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=black)](${p.socials.leetcode})`);
     }
     if (p.socials.email) {
       const emailUrl = p.socials.email.startsWith('mailto:') ? p.socials.email : `mailto:${p.socials.email}`;
@@ -437,8 +554,27 @@ ${coreList}`
 
   // GITHUB STATS & ACTIVITY SECTION
   if (s.metrics) {
-    const theme = config.display_options.stats_theme || 'tokyonight';
-    const hideBorder = config.display_options.hide_stats_border ? '&hide_border=true' : '';
+    const opts = config.display_options || {};
+    const baseUrl = opts.stats_base_url || 'https://github-readme-stats-fast.vercel.app';
+    const theme = opts.stats_theme || 'tokyonight';
+    const hideBorder = opts.hide_stats_border ? '&hide_border=true' : '';
+    const excludeRepos = (config.featured_projects?.exclude || []).join(',');
+    const excludeParam = excludeRepos ? `&exclude_repo=${excludeRepos}` : '';
+
+    const cards = [];
+    if (opts.show_stats_card !== false) {
+      cards.push(`<img height="165" src="${baseUrl}/api?username=${p.username}&show_icons=true&theme=${theme}${hideBorder}&include_all_commits=true&count_private=false" alt="${p.name}'s GitHub Stats" />`);
+    }
+    if (opts.show_langs_card !== false) {
+      cards.push(`<img height="165" src="${baseUrl}/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}${excludeParam}" alt="Top Languages" />`);
+    }
+    if (opts.show_streak_card) {
+      cards.push(`<img height="165" src="https://streak-stats.demolab.com/?user=${p.username}&theme=${theme}${hideBorder}" alt="${p.name}'s Streak Stats" />`);
+    }
+
+    const cardsHtml = cards.length > 0
+      ? `\n<a href="https://github.com/${p.username}">\n  ${cards.join('\n  ')}\n</a>\n`
+      : '';
 
     parts.push(
 `## 📊 GitHub Activity & Metrics
@@ -451,14 +587,63 @@ ${coreList}`
 | **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |
 
 <br />
-
-<a href="https://github.com/${p.username}">
-  <img height="165em" src="https://github-readme-stats.vercel.app/api?username=${p.username}&show_icons=true&theme=${theme}${hideBorder}&include_all_commits=true&count_private=false" alt="${p.name}'s GitHub Stats" />
-  <img height="165em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}" alt="Top Languages" />
-</a>
-
+${cardsHtml}
 </div>`
     );
+  }
+
+  // LEETCODE & ALGORITHMIC METRICS SECTION
+  if (s.leetcode) {
+    const lcConfig = config.leetcode || {};
+    const lcUser = lcConfig.username || 'devsagarkrjha';
+    const lcTheme = lcConfig.theme || 'dark';
+    const showTable = lcConfig.show_table !== false;
+    const showCard = lcConfig.show_card !== false;
+
+    const tableRows = [];
+    if (showTable && leetcodeData) {
+      const ratingStr = leetcodeData.contestRating
+        ? `\`${leetcodeData.contestRating}\`${leetcodeData.topPercentage ? ` (Top ${leetcodeData.topPercentage}%)` : ''}`
+        : '`N/A`';
+      const contestRankStr = leetcodeData.contestRanking
+        ? `\`${leetcodeData.contestRanking.toLocaleString('en-US')}${leetcodeData.totalParticipants ? ` / ${leetcodeData.totalParticipants.toLocaleString('en-US')}` : ''}\``
+        : '`N/A`';
+      const badgeStr = leetcodeData.badge ? `\`${leetcodeData.badge} ⚔️\`` : '`Knight`';
+
+      tableRows.push(
+`| Metric | Value | Metric | Value |
+| :--- | :---: | :--- | :---: |
+| **Contest Rating** | ${ratingStr} | **Global Contest Rank** | ${contestRankStr} |
+| **Problems Solved** | \`${leetcodeData.totalSolved}\` | **Badge** | ${badgeStr} |
+| **Hard Solved** | \`${leetcodeData.hardSolved}\` | **Medium Solved** | \`${leetcodeData.mediumSolved}\` |`
+      );
+    }
+
+    const cardElements = [];
+    if (showCard) {
+      cardElements.push(
+`<a href="https://leetcode.com/u/${lcUser}/">
+  <img height="340" src="https://leetcard.jacoblin.cool/${lcUser}?ext=contest&theme=${lcTheme}" alt="${p.name}'s LeetCode Stats" />
+</a>`
+      );
+    }
+
+    const contentBlocks = [];
+    if (tableRows.length > 0) contentBlocks.push(tableRows.join('\n'));
+    if (tableRows.length > 0 && cardElements.length > 0) contentBlocks.push('<br />');
+    if (cardElements.length > 0) contentBlocks.push(cardElements.join('\n'));
+
+    if (contentBlocks.length > 0) {
+      parts.push(
+`## ⚔️ Algorithmic & LeetCode Metrics
+
+<div align="center">
+
+${contentBlocks.join('\n\n')}
+
+</div>`
+      );
+    }
   }
 
   // ACHIEVEMENTS & MILESTONES SECTION
