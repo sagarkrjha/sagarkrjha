@@ -2,18 +2,17 @@
   "profile": {
     "username": "sagarkrjha",
     "name": "Sagar Kumar Jha",
-    "role": "Aspiring Software Engineer",
-    "tagline": "Aspiring Software Engineer · Systems & Developer Tooling",
+    "role": "Software Engineer",
+    "tagline": "Software Engineer · Systems & Developer Tooling",
     "bio": "I build robust systems, developer tools, and low-level software from first principles. Currently exploring version control internals, content-addressable storage, and systems programming in modern C++.",
     "location": "",
     "socials": {
-      "github": "https://github.com/sagarkrjha",
       "linkedin": "https://linkedin.com/in/devsagarkumarjha",
       "twitter": "https://x.com/devsagarkrjha",
       "leetcode": "https://leetcode.com/u/devsagarkrjha/",
+      "discord": "https://discord.com/users/894502933801107476",
       "instagram": "",
       "youtube": "",
-      "discord": "",
       "email": ""
     }
   },
