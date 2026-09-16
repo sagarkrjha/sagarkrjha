@@ -1,0 +1,24 @@
+{
+  "name": "sagarkrjha-profile",
+  "version": "1.0.0",
+  "description": "Automated GitHub Profile README for Sagar Kumar Jha",
+  "type": "module",
+  "main": "scripts/update_readme.js",
+  "scripts": {
+    "start": "node scripts/update_readme.js",
+    "build": "node scripts/update_readme.js",
+    "check": "node scripts/update_readme.js --check",
+    "dry-run": "node scripts/update_readme.js --dry-run"
+  },
+  "keywords": [
+    "github-profile",
+    "profile-readme",
+    "automation",
+    "github-actions"
+  ],
+  "author": "Sagar Kumar Jha",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

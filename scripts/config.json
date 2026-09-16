@@ -1,0 +1,84 @@
+{
+  "profile": {
+    "username": "sagarkrjha",
+    "name": "Sagar Kumar Jha",
+    "role": "Aspiring Software Engineer",
+    "tagline": "Aspiring Software Engineer · Systems & Developer Tooling",
+    "bio": "I build robust systems, developer tools, and low-level software from first principles. Currently exploring version control internals, content-addressable storage, and systems programming in modern C++.",
+    "location": "",
+    "socials": {
+      "github": "https://github.com/sagarkrjha",
+      "linkedin": "https://linkedin.com/in/devsagarkumarjha",
+      "twitter": "https://x.com/devsagarkrjha",
+      "instagram": "",
+      "youtube": "",
+      "discord": "",
+      "email": ""
+    }
+  },
+  "sections": {
+    "header": true,
+    "about": true,
+    "currently_building": true,
+    "featured_projects": true,
+    "tech_stack": true,
+    "metrics": true,
+    "achievements": true,
+    "interests": true,
+    "footer": true
+  },
+  "featured_projects": {
+    "max_count": 6,
+    "pinned": ["minigit"],
+    "exclude": ["sagarkrjha"],
+    "include_forks": false,
+    "custom_metadata": {
+      "minigit": {
+        "title": "MiniGit",
+        "description": "A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.",
+        "highlights": [
+          "SHA-256 Content-Addressable Storage (CAS)",
+          "DAG-based commit history and branch management",
+          "Two-phase staging index & DP diff engine",
+          "Automated cross-platform releases for Windows, Linux, and macOS"
+        ]
+      }
+    }
+  },
+  "tech_stack_catalog": {
+    "languages": {
+      "C++": { "badge": "C%2B%2B-20-00599C?style=flat-square&logo=c%2B%2B&logoColor=white", "label": "C++20" },
+      "C": { "badge": "C-00599C?style=flat-square&logo=c&logoColor=white", "label": "C" },
+      "JavaScript": { "badge": "JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black", "label": "JavaScript" },
+      "TypeScript": { "badge": "TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white", "label": "TypeScript" },
+      "Shell": { "badge": "Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white", "label": "Bash / Shell" }
+    },
+    "systems_and_tooling": {
+      "CMake": { "badge": "CMake-064F8C?style=flat-square&logo=cmake&logoColor=white", "label": "CMake" },
+      "OpenSSL": { "badge": "OpenSSL-721412?style=flat-square&logo=openssl&logoColor=white", "label": "OpenSSL (SHA-256)" },
+      "Zlib": { "badge": "Zlib-Compression-lightgrey?style=flat-square", "label": "Zlib" },
+      "Git": { "badge": "Git-F05032?style=flat-square&logo=git&logoColor=white", "label": "Git Internals" },
+      "Linux": { "badge": "Linux-FCC624?style=flat-square&logo=linux&logoColor=black", "label": "Linux / POSIX" },
+      "Windows": { "badge": "Windows-0078D6?style=flat-square&logo=windows&logoColor=white", "label": "Windows API" }
+    },
+    "devops_and_ci": {
+      "GitHub Actions": { "badge": "GitHub%20Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white", "label": "GitHub Actions" },
+      "Docker": { "badge": "Docker-2496ED?style=flat-square&logo=docker&logoColor=white", "label": "Docker" },
+      "Compilers": { "badge": "GCC%20%7C%20Clang%20%7C%20MSVC-555555?style=flat-square&logo=gnu&logoColor=white", "label": "GCC / Clang / MSVC" }
+    },
+    "core_competencies": [
+      "Content-Addressable Storage (CAS)",
+      "Directed Acyclic Graph (DAG) Topologies",
+      "Dynamic Programming Diff Algorithms",
+      "Cryptographic Hashing & Data Integrity",
+      "Systems Programming & Memory Management"
+    ]
+  },
+  "display_options": {
+    "stats_theme": "tokyonight",
+    "hide_stats_border": true,
+    "show_stats_card": true,
+    "show_langs_card": true,
+    "show_streak_card": false
+  }
+}
