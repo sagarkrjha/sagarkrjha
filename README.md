@@ -17,16 +17,16 @@ I build robust systems, developer tools, and low-level software from first princ
 
 ## ⚡ Currently Building
 
-### [MiniGit](https://github.com/sagarkrjha/minigit) [![Latest Release](https://img.shields.io/badge/release-v1.8.2-blue.svg?style=flat-square)](https://github.com/sagarkrjha/minigit/releases)
+### [MiniGit](https://github.com/sagarkrjha/minigit) [![Latest Release](https://img.shields.io/badge/release-v1.9.0-blue.svg?style=flat-square)](https://github.com/sagarkrjha/minigit/releases)
 > A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
 
 - **Recent Focus:** First-principles Git architecture in modern C++20 with SHA-256 CAS, staging index, and cross-platform CI/CD automation.
-- **Active Repository:** [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) · *Last updated: Sep 19, 2026*
+- **Active Repository:** [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) · *Last updated: Sep 22, 2026*
 
 ## 🚀 Featured Projects
 
 ### 📁 [MiniGit](https://github.com/sagarkrjha/minigit)
-![Stars](https://img.shields.io/badge/stars-%E2%98%85%2012-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.8.2-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Stars](https://img.shields.io/badge/stars-%E2%98%85%2012-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.9.0-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
 
@@ -80,8 +80,8 @@ Supported by real repository code and active systems development:
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Contest Rating** | `2280` (Top 0.61%) | **Global Contest Rank** | `5,055 / 883,546` |
-| **Problems Solved** | `698` | **Badge** | `Guardian ⚔️` |
-| **Hard Solved** | `145` | **Medium Solved** | `351` |
+| **Problems Solved** | `699` | **Badge** | `Guardian ⚔️` |
+| **Hard Solved** | `145` | **Medium Solved** | `352` |
 
 <br />
 
@@ -93,10 +93,10 @@ Supported by real repository code and active systems development:
 
 ## 🏆 Milestones & Achievements
 
-- Shipped **MiniGit v1.8.2**
-  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.8.2))
+- Shipped **MiniGit v1.9.0**
+  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.9.0))
 - Achieved **LeetCode Guardian** · **2280 Contest Rating** (Top 0.61% globally)
-  *Solved **698+ algorithmic problems** (145 Hard, 351 Medium) with a peak contest rating of **2280**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+  *Solved **699+ algorithmic problems** (145 Hard, 352 Medium) with a peak contest rating of **2280**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **12+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
@@ -110,6 +110,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-22 03:10 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-23 03:10 UTC`*
 
 </div>
