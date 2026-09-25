@@ -26,7 +26,7 @@ I build robust systems, developer tools, and low-level software from first princ
 ## 🚀 Featured Projects
 
 ### 📁 [MiniGit](https://github.com/sagarkrjha/minigit)
-![Stars](https://img.shields.io/badge/stars-%E2%98%85%2012-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.11.3-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Stars](https://img.shields.io/badge/stars-%E2%98%85%2013-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.11.3-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
 
@@ -38,13 +38,24 @@ A Git-compatible version control system implemented from first principles in mod
 - **Technologies:** `C++` · `algorithms` · `cmake` · `content-addressable-storage` · `cpp20` · `sha256-hash`
 - **Repository:** [github.com/sagarkrjha/minigit](https://github.com/sagarkrjha/minigit)
 
+---
+
+### 📁 [codeshelf](https://github.com/sagarkrjha/codeshelf)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+
+CodeShelf — Developer-focused snippet knowledge system across desktop and IDE
+
+
+- **Technologies:** `TypeScript`
+- **Repository:** [github.com/sagarkrjha/codeshelf](https://github.com/sagarkrjha/codeshelf)
+
 ## 🛠️ Technical Stack & Tooling
 
 Supported by real repository code and active systems development:
 
 | Category | Technologies & Tools |
 | :--- | :--- |
-| **Languages** | ![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white) |
+| **Languages** | ![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) |
 | **Systems & Core Tooling** | ![CMake](https://img.shields.io/badge/CMake-064F8C?style=flat-square&logo=cmake&logoColor=white) ![OpenSSL (SHA-256)](https://img.shields.io/badge/OpenSSL-721412?style=flat-square&logo=openssl&logoColor=white) ![Zlib](https://img.shields.io/badge/Zlib-Compression-lightgrey?style=flat-square) ![Git Internals](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![Linux / POSIX](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) ![Windows API](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white) |
 | **DevOps & Build Infrastructure** | ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GCC / Clang / MSVC](https://img.shields.io/badge/GCC%20%7C%20Clang%20%7C%20MSVC-555555?style=flat-square&logo=gnu&logoColor=white) |
 
@@ -61,8 +72,8 @@ Supported by real repository code and active systems development:
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `2` | **Followers** | `28` |
-| **Stars Earned** | `12` | **Following** | `23` |
+| **Public Repositories** | `3` | **Followers** | `27` |
+| **Stars Earned** | `13` | **Following** | `23` |
 
 <br />
 
@@ -80,8 +91,8 @@ Supported by real repository code and active systems development:
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Contest Rating** | `2280` (Top 0.61%) | **Global Contest Rank** | `5,055 / 883,546` |
-| **Problems Solved** | `699` | **Badge** | `Guardian ⚔️` |
-| **Hard Solved** | `145` | **Medium Solved** | `352` |
+| **Problems Solved** | `700` | **Badge** | `Guardian ⚔️` |
+| **Hard Solved** | `145` | **Medium Solved** | `353` |
 
 <br />
 
@@ -96,8 +107,8 @@ Supported by real repository code and active systems development:
 - Shipped **MiniGit v1.11.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
 - Achieved **LeetCode Guardian** · **2280 Contest Rating** (Top 0.61% globally)
-  *Solved **699+ algorithmic problems** (145 Hard, 352 Medium) with a peak contest rating of **2280**.* ([View](https://leetcode.com/u/devsagarkrjha/))
-- Earned **12+ GitHub Stars** across open-source systems projects.
+  *Solved **700+ algorithmic problems** (145 Hard, 353 Medium) with a peak contest rating of **2280**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+- Earned **13+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
 ## 🧭 Engineering Focus & Current Interests
@@ -110,6 +121,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-24 03:00 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-25 02:02 UTC`*
 
 </div>
