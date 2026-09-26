@@ -72,7 +72,7 @@ Supported by real repository code and active systems development:
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `3` | **Followers** | `27` |
+| **Public Repositories** | `3` | **Followers** | `26` |
 | **Stars Earned** | `13` | **Following** | `23` |
 
 <br />
@@ -90,9 +90,9 @@ Supported by real repository code and active systems development:
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Contest Rating** | `2280` (Top 0.61%) | **Global Contest Rank** | `5,055 / 883,546` |
-| **Problems Solved** | `701` | **Badge** | `Guardian ⚔️` |
-| **Hard Solved** | `146` | **Medium Solved** | `353` |
+| **Contest Rating** | `2300` (Top 0.54%) | **Global Contest Rank** | `4,546 / 884,439` |
+| **Problems Solved** | `702` | **Badge** | `Guardian ⚔️` |
+| **Hard Solved** | `146` | **Medium Solved** | `354` |
 
 <br />
 
@@ -106,8 +106,8 @@ Supported by real repository code and active systems development:
 
 - Shipped **MiniGit v1.11.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
-- Achieved **LeetCode Guardian** · **2280 Contest Rating** (Top 0.61% globally)
-  *Solved **701+ algorithmic problems** (146 Hard, 353 Medium) with a peak contest rating of **2280**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+- Achieved **LeetCode Guardian** · **2300 Contest Rating** (Top 0.54% globally)
+  *Solved **702+ algorithmic problems** (146 Hard, 354 Medium) with a peak contest rating of **2300**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **13+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
@@ -121,6 +121,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-25 03:18 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-26 03:22 UTC`*
 
 </div>
