@@ -38,13 +38,24 @@ A Git-compatible version control system implemented from first principles in mod
 - **Technologies:** `C++` · `algorithms` · `cmake` · `content-addressable-storage` · `cpp20` · `sha256-hash`
 - **Repository:** [github.com/sagarkrjha/minigit](https://github.com/sagarkrjha/minigit)
 
+---
+
+### 📁 [next-mdx-starter](https://github.com/sagarkrjha/next-mdx-starter)
+
+
+A modern, reusable starter template built with Next.js (App Router), Tailwind CSS v4, Biome, shadcn/ui, Radix UI, next-themes, and Hugeicons.
+
+
+- **Technologies:** `TypeScript`
+- **Repository:** [github.com/sagarkrjha/next-mdx-starter](https://github.com/sagarkrjha/next-mdx-starter)
+
 ## 🛠️ Technical Stack & Tooling
 
 Supported by real repository code and active systems development:
 
 | Category | Technologies & Tools |
 | :--- | :--- |
-| **Languages** | ![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white) |
+| **Languages** | ![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) |
 | **Systems & Core Tooling** | ![CMake](https://img.shields.io/badge/CMake-064F8C?style=flat-square&logo=cmake&logoColor=white) ![OpenSSL (SHA-256)](https://img.shields.io/badge/OpenSSL-721412?style=flat-square&logo=openssl&logoColor=white) ![Zlib](https://img.shields.io/badge/Zlib-Compression-lightgrey?style=flat-square) ![Git Internals](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![Linux / POSIX](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black) ![Windows API](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white) |
 | **DevOps & Build Infrastructure** | ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GCC / Clang / MSVC](https://img.shields.io/badge/GCC%20%7C%20Clang%20%7C%20MSVC-555555?style=flat-square&logo=gnu&logoColor=white) |
 
@@ -61,7 +72,7 @@ Supported by real repository code and active systems development:
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `2` | **Followers** | `26` |
+| **Public Repositories** | `3` | **Followers** | `26` |
 | **Stars Earned** | `13` | **Following** | `23` |
 
 <br />
@@ -80,8 +91,8 @@ Supported by real repository code and active systems development:
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Contest Rating** | `2300` (Top 0.54%) | **Global Contest Rank** | `4,546 / 884,439` |
-| **Problems Solved** | `703` | **Badge** | `Guardian ⚔️` |
-| **Hard Solved** | `146` | **Medium Solved** | `355` |
+| **Problems Solved** | `708` | **Badge** | `Guardian ⚔️` |
+| **Hard Solved** | `147` | **Medium Solved** | `357` |
 
 <br />
 
@@ -96,7 +107,7 @@ Supported by real repository code and active systems development:
 - Shipped **MiniGit v1.11.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
 - Achieved **LeetCode Guardian** · **2300 Contest Rating** (Top 0.54% globally)
-  *Solved **703+ algorithmic problems** (146 Hard, 355 Medium) with a peak contest rating of **2300**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+  *Solved **708+ algorithmic problems** (147 Hard, 357 Medium) with a peak contest rating of **2300**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **13+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
@@ -110,6 +121,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-27 03:31 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-28 03:28 UTC`*
 
 </div>
