@@ -40,6 +40,17 @@ A Git-compatible version control system implemented from first principles in mod
 
 ---
 
+### 📁 [Portfolio-web](https://github.com/sagarkrjha/Portfolio-web)
+
+
+My portfolio website as a Software developer to show case my personal work and stats.
+
+
+- **Technologies:** `TypeScript`
+- **Repository:** [github.com/sagarkrjha/Portfolio-web](https://github.com/sagarkrjha/Portfolio-web)
+
+---
+
 ### 📁 [next-mdx-starter](https://github.com/sagarkrjha/next-mdx-starter)
 
 
@@ -72,7 +83,7 @@ Supported by real repository code and active systems development:
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `3` | **Followers** | `26` |
+| **Public Repositories** | `4` | **Followers** | `26` |
 | **Stars Earned** | `13` | **Following** | `23` |
 
 <br />
@@ -91,8 +102,8 @@ Supported by real repository code and active systems development:
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Contest Rating** | `2300` (Top 0.54%) | **Global Contest Rank** | `4,546 / 884,439` |
-| **Problems Solved** | `708` | **Badge** | `Guardian ⚔️` |
-| **Hard Solved** | `147` | **Medium Solved** | `357` |
+| **Problems Solved** | `709` | **Badge** | `Guardian ⚔️` |
+| **Hard Solved** | `148` | **Medium Solved** | `357` |
 
 <br />
 
@@ -107,7 +118,7 @@ Supported by real repository code and active systems development:
 - Shipped **MiniGit v1.11.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
 - Achieved **LeetCode Guardian** · **2300 Contest Rating** (Top 0.54% globally)
-  *Solved **708+ algorithmic problems** (147 Hard, 357 Medium) with a peak contest rating of **2300**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+  *Solved **709+ algorithmic problems** (148 Hard, 357 Medium) with a peak contest rating of **2300**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **13+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
@@ -121,6 +132,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-28 03:28 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-09-30 03:51 UTC`*
 
 </div>
