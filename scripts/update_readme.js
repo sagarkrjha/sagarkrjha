@@ -299,10 +299,10 @@ async function run() {
     }
   }
 
-  // 3. Fetch LeetCode stats (if enabled)
+  // 3. Fetch LeetCode stats (if enabled for metrics or achievements)
   let leetcodeData = null;
   const lcUsername = config.leetcode?.username || 'devsagarkrjha';
-  if (config.sections?.leetcode !== false && lcUsername) {
+  if ((config.sections?.leetcode || config.sections?.achievements !== false) && lcUsername) {
     console.log(`📡 Fetching LeetCode data for @${lcUsername}...`);
     leetcodeData = await fetchLeetCode(lcUsername);
     if (leetcodeData) {
@@ -565,39 +565,49 @@ ${coreList}`
     if (opts.show_stats_card !== false) {
       cards.push(`<img height="165" src="${baseUrl}/api?username=${p.username}&show_icons=true&theme=${theme}${hideBorder}&include_all_commits=true&count_private=false" alt="${p.name}'s GitHub Stats" />`);
     }
-    if (opts.show_langs_card !== false) {
-      cards.push(`<img height="165" src="${baseUrl}/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}${excludeParam}" alt="Top Languages" />`);
-    }
     if (opts.show_streak_card) {
       cards.push(`<img height="165" src="https://streak-stats.demolab.com/?user=${p.username}&theme=${theme}${hideBorder}" alt="${p.name}'s Streak Stats" />`);
+    }
+    if (opts.show_langs_card !== false) {
+      cards.push(`<img height="165" src="${baseUrl}/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}${excludeParam}" alt="Top Languages" />`);
     }
 
     const cardsHtml = cards.length > 0
       ? `\n<a href="https://github.com/${p.username}">\n  ${cards.join('\n  ')}\n</a>\n`
       : '';
 
+    const showTable = opts.show_table === true;
+    const tableHtml = showTable
+      ? `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n| **Public Repositories** | \`${user.public_repos}\` | **Followers** | \`${user.followers}\` |\n| **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |\n\n<br />`
+      : '';
+
+    const sectionTitle = showTable ? '## 📊 GitHub Activity & Metrics' : '## 📊 GitHub Activity';
+
+    const innerBlocks = [];
+    if (tableHtml) innerBlocks.push(tableHtml);
+    if (cards.length > 0) {
+      innerBlocks.push(`<a href="https://github.com/${p.username}">\n  ${cards.join('\n  ')}\n</a>`);
+    }
+
     parts.push(
-`## 📊 GitHub Activity & Metrics
+`${sectionTitle}
 
 <div align="center">
 
-| Metric | Value | Metric | Value |
-| :--- | :---: | :--- | :---: |
-| **Public Repositories** | \`${user.public_repos}\` | **Followers** | \`${user.followers}\` |
-| **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |
+${innerBlocks.join('\n\n')}
 
-<br />
-${cardsHtml}
 </div>`
     );
   }
 
-  // LEETCODE & ALGORITHMIC METRICS SECTION
+  // LEETCODE SECTION
   if (s.leetcode) {
     const lcConfig = config.leetcode || {};
     const lcUser = lcConfig.username || 'devsagarkrjha';
-    const lcTheme = lcConfig.theme || 'dark';
-    const showTable = lcConfig.show_table !== false;
+    const lcTheme = lcConfig.theme || 'transparent';
+    const lcFont = lcConfig.font ? `&font=${encodeURIComponent(lcConfig.font)}` : '';
+    const lcExt = lcConfig.ext ? `&ext=${encodeURIComponent(lcConfig.ext)}` : '';
+    const showTable = lcConfig.show_table === true;
     const showCard = lcConfig.show_card !== false;
 
     const tableRows = [];
@@ -621,10 +631,9 @@ ${cardsHtml}
 
     const cardElements = [];
     if (showCard) {
+      const cardUrl = `https://leetcard.jacoblin.cool/${lcUser}?theme=${lcTheme}${lcFont}${lcExt}`;
       cardElements.push(
-`<a href="https://leetcode.com/u/${lcUser}/">
-  <img height="340" src="https://leetcard.jacoblin.cool/${lcUser}?ext=contest&theme=${lcTheme}" alt="${p.name}'s LeetCode Stats" />
-</a>`
+`[![LeetCode Stats](${cardUrl})](https://leetcode.com/u/${lcUser}/)`
       );
     }
 
@@ -633,9 +642,11 @@ ${cardsHtml}
     if (tableRows.length > 0 && cardElements.length > 0) contentBlocks.push('<br />');
     if (cardElements.length > 0) contentBlocks.push(cardElements.join('\n'));
 
+    const sectionTitle = showTable ? '## ⚔️ Algorithmic & LeetCode Metrics' : '## ⚔️ LeetCode Stats';
+
     if (contentBlocks.length > 0) {
       parts.push(
-`## ⚔️ Algorithmic & LeetCode Metrics
+`${sectionTitle}
 
 <div align="center">
 

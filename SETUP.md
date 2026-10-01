@@ -139,7 +139,7 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
     "featured_projects": true,
     "tech_stack": true,
     "metrics": true,
-    "leetcode": true,
+    "leetcode": false, // Toggle standalone Algorithmic & LeetCode Metrics section
     "achievements": true,
     "interests": true,
     "footer": true
@@ -167,14 +167,17 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
     "stats_theme": "tokyonight", // Theme for GitHub stats card
     "hide_stats_border": true,
     "show_stats_card": true,
+    "show_streak_card": true,    // Toggle GitHub Streak stats card
     "show_langs_card": true,
-    "show_streak_card": false
+    "show_table": false          // Toggle GitHub repositories/followers table
   },
   "leetcode": {
     "username": "devsagarkrjha", // LeetCode handle
-    "theme": "dark",             // Theme for LeetCode contest rating card
-    "show_table": true,          // Display live summary metrics table
-    "show_card": true            // Display interactive contest rating SVG card
+    "theme": "transparent",      // Theme for LeetCode stats card (light, dark, transparent, etc.)
+    "font": "Inter",             // Font family for LeetCode card
+    "ext": "heatmap",            // Card extension (e.g. heatmap, activity)
+    "show_table": false,         // Display live summary metrics table
+    "show_card": true            // Display LeetCode SVG card
   }
 }
 ```

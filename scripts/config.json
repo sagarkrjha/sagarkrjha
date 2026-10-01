@@ -80,13 +80,16 @@
     "stats_theme": "tokyonight",
     "hide_stats_border": true,
     "show_stats_card": true,
+    "show_streak_card": true,
     "show_langs_card": true,
-    "show_streak_card": false
+    "show_table": false
   },
   "leetcode": {
     "username": "devsagarkrjha",
-    "theme": "dark",
-    "show_table": true,
+    "theme": "transparent",
+    "font": "Inter",
+    "ext": "heatmap",
+    "show_table": false,
     "show_card": true
   }
 }

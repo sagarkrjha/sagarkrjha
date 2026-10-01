@@ -77,39 +77,23 @@ Supported by real repository code and active systems development:
 - **Cryptographic Hashing & Data Integrity**
 - **Systems Programming & Memory Management**
 
-## 📊 GitHub Activity & Metrics
+## 📊 GitHub Activity
 
 <div align="center">
 
-| Metric | Value | Metric | Value |
-| :--- | :---: | :--- | :---: |
-| **Public Repositories** | `4` | **Followers** | `26` |
-| **Stars Earned** | `13` | **Following** | `23` |
-
-<br />
-
 <a href="https://github.com/sagarkrjha">
   <img height="165" src="https://github-readme-stats-fast.vercel.app/api?username=sagarkrjha&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false" alt="Sagar Kumar Jha's GitHub Stats" />
+  <img height="165" src="https://streak-stats.demolab.com/?user=sagarkrjha&theme=tokyonight&hide_border=true" alt="Sagar Kumar Jha's Streak Stats" />
   <img height="165" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=sagarkrjha&layout=compact&theme=tokyonight&hide_border=true&exclude_repo=sagarkrjha" alt="Top Languages" />
 </a>
 
 </div>
 
-## ⚔️ Algorithmic & LeetCode Metrics
+## ⚔️ LeetCode Stats
 
 <div align="center">
 
-| Metric | Value | Metric | Value |
-| :--- | :---: | :--- | :---: |
-| **Contest Rating** | `2300` (Top 0.54%) | **Global Contest Rank** | `4,546 / 884,439` |
-| **Problems Solved** | `710` | **Badge** | `Guardian ⚔️` |
-| **Hard Solved** | `148` | **Medium Solved** | `358` |
-
-<br />
-
-<a href="https://leetcode.com/u/devsagarkrjha/">
-  <img height="340" src="https://leetcard.jacoblin.cool/devsagarkrjha?ext=contest&theme=dark" alt="Sagar Kumar Jha's LeetCode Stats" />
-</a>
+[![LeetCode Stats](https://leetcard.jacoblin.cool/devsagarkrjha?theme=transparent&font=Inter&ext=heatmap)](https://leetcode.com/u/devsagarkrjha/)
 
 </div>
 
@@ -132,6 +116,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-01 03:59 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-01 09:32 UTC`*
 
 </div>
