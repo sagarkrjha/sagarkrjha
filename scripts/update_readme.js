@@ -604,7 +604,7 @@ ${innerBlocks.join('\n\n')}
   if (s.leetcode) {
     const lcConfig = config.leetcode || {};
     const lcUser = lcConfig.username || 'devsagarkrjha';
-    const lcTheme = lcConfig.theme || 'transparent';
+    const lcTheme = lcConfig.theme || 'dark';
     const lcFont = lcConfig.font ? `&font=${encodeURIComponent(lcConfig.font)}` : '';
     const lcExt = lcConfig.ext ? `&ext=${encodeURIComponent(lcConfig.ext)}` : '';
     const showTable = lcConfig.show_table === true;

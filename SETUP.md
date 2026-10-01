@@ -173,7 +173,7 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
   },
   "leetcode": {
     "username": "devsagarkrjha", // LeetCode handle
-    "theme": "transparent",      // Theme for LeetCode stats card (light, dark, transparent, etc.)
+    "theme": "dark",             // Theme for LeetCode stats card (dark, transparent, light, etc.)
     "font": "Inter",             // Font family for LeetCode card
     "ext": "heatmap",            // Card extension (e.g. heatmap, activity)
     "show_table": false,         // Display live summary metrics table

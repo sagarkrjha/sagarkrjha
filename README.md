@@ -93,7 +93,7 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-[![LeetCode Stats](https://leetcard.jacoblin.cool/devsagarkrjha?theme=transparent&font=Inter&ext=heatmap)](https://leetcode.com/u/devsagarkrjha/)
+[![LeetCode Stats](https://leetcard.jacoblin.cool/devsagarkrjha?theme=dark&font=Inter&ext=heatmap)](https://leetcode.com/u/devsagarkrjha/)
 
 </div>
 
