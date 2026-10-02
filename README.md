@@ -40,14 +40,14 @@ A Git-compatible version control system implemented from first principles in mod
 
 ---
 
-### 📁 [Portfolio-web](https://github.com/sagarkrjha/Portfolio-web)
+### 📁 [portfolio-web](https://github.com/sagarkrjha/portfolio-web)
 
 
 My portfolio website as a Software developer to show case my personal work and stats.
 
 
 - **Technologies:** `TypeScript`
-- **Repository:** [github.com/sagarkrjha/Portfolio-web](https://github.com/sagarkrjha/Portfolio-web)
+- **Repository:** [github.com/sagarkrjha/portfolio-web](https://github.com/sagarkrjha/portfolio-web)
 
 ---
 
@@ -101,8 +101,8 @@ Supported by real repository code and active systems development:
 
 - Shipped **MiniGit v1.11.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
-- Achieved **LeetCode Guardian** · **2300 Contest Rating** (Top 0.54% globally)
-  *Solved **710+ algorithmic problems** (148 Hard, 358 Medium) with a peak contest rating of **2300**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+- Achieved **LeetCode Guardian** · **2382 Contest Rating** (Top 0.36% globally)
+  *Solved **710+ algorithmic problems** (148 Hard, 358 Medium) with a peak contest rating of **2382**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **13+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
@@ -116,6 +116,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-01 09:32 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-02 03:55 UTC`*
 
 </div>
