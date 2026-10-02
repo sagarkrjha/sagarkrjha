@@ -51,6 +51,17 @@ My portfolio website as a Software developer to show case my personal work and s
 
 ---
 
+### 📁 [codeshelf](https://github.com/sagarkrjha/codeshelf)
+![Release](https://img.shields.io/badge/release-v0.3.0-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+
+Developer-focused snippet knowledge system — capture, organize and reuse code across desktop, VS Code, and web. AI autofill, version history, and Markdown-first editor.
+
+
+- **Technologies:** `TypeScript` · `ai` · `code-snippets` · `developer-tools` · `electron` · `gemini`
+- **Repository:** [github.com/sagarkrjha/codeshelf](https://github.com/sagarkrjha/codeshelf)
+
+---
+
 ### 📁 [next-mdx-starter](https://github.com/sagarkrjha/next-mdx-starter)
 
 
@@ -101,6 +112,8 @@ Supported by real repository code and active systems development:
 
 - Shipped **MiniGit v1.11.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
+- Shipped **codeshelf v0.3.0**
+  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.0))
 - Achieved **LeetCode Guardian** · **2382 Contest Rating** (Top 0.36% globally)
   *Solved **710+ algorithmic problems** (148 Hard, 358 Medium) with a peak contest rating of **2382**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **13+ GitHub Stars** across open-source systems projects.
@@ -116,6 +129,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-02 03:55 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-02 07:58 UTC`*
 
 </div>
