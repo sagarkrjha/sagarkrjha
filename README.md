@@ -26,7 +26,7 @@ I build robust systems, developer tools, and low-level software from first princ
 ## 🚀 Featured Projects
 
 ### 📁 [MiniGit](https://github.com/sagarkrjha/minigit)
-![Stars](https://img.shields.io/badge/stars-%E2%98%85%2013-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.11.3-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Stars](https://img.shields.io/badge/stars-%E2%98%85%2014-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.11.3-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
 
@@ -41,7 +41,7 @@ A Git-compatible version control system implemented from first principles in mod
 ---
 
 ### 📁 [codeshelf](https://github.com/sagarkrjha/codeshelf)
-![Release](https://img.shields.io/badge/release-v0.3.1-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Stars](https://img.shields.io/badge/stars-%E2%98%85%201-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v0.3.1-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 Developer-focused snippet knowledge system — capture, organize and reuse code across desktop, VS Code, and web. AI autofill, version history, and Markdown-first editor.
 
@@ -115,8 +115,8 @@ Supported by real repository code and active systems development:
 - Shipped **codeshelf v0.3.1**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.1))
 - Achieved **LeetCode Guardian** · **2382 Contest Rating** (Top 0.36% globally)
-  *Solved **710+ algorithmic problems** (148 Hard, 358 Medium) with a peak contest rating of **2382**.* ([View](https://leetcode.com/u/devsagarkrjha/))
-- Earned **13+ GitHub Stars** across open-source systems projects.
+  *Solved **715+ algorithmic problems** (149 Hard, 361 Medium) with a peak contest rating of **2382**.* ([View](https://leetcode.com/u/devsagarkrjha/))
+- Earned **15+ GitHub Stars** across open-source systems projects.
   *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
 ## 🧭 Engineering Focus & Current Interests
@@ -129,6 +129,6 @@ Supported by real repository code and active systems development:
 
 <div align="center">
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-03 11:36 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-04 04:10 UTC`*
 
 </div>
