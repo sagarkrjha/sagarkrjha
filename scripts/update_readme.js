@@ -264,7 +264,7 @@ async function run() {
     });
   }
 
-  // Determine featured projects: pinned repos first, then by stars and push date
+  // Determine featured projects: pinned repos as Featured Projects, rest as Other Projects
   const pinnedSet = new Set(config.featured_projects.pinned || []);
   enrichedRepos.sort((a, b) => {
     const aPinned = pinnedSet.has(a.name);
@@ -277,7 +277,8 @@ async function run() {
     return new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime();
   });
 
-  const featuredProjects = enrichedRepos.slice(0, config.featured_projects.max_count || 6);
+  const featuredProjects = enrichedRepos.filter(r => pinnedSet.has(r.name));
+  const otherProjects = enrichedRepos.filter(r => !pinnedSet.has(r.name));
 
   // Determine "Currently Building"
   const activeRepo = enrichedRepos.find(r => !excludeSet.has(r.name));
@@ -339,6 +340,7 @@ async function run() {
     totalForks,
     languageBytes,
     featuredProjects,
+    otherProjects,
     activeRepo,
     achievements,
     leetcodeData
@@ -381,7 +383,7 @@ async function run() {
 /**
  * Builds the complete Markdown string from fetched data
  */
-function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, featuredProjects, activeRepo, achievements, leetcodeData }) {
+function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, featuredProjects, otherProjects = [], activeRepo, achievements, leetcodeData }) {
   const p = config.profile;
   const s = config.sections;
   const parts = [];
@@ -416,14 +418,10 @@ function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, fe
     }
 
     parts.push(
-`<div align="center">
-
-# ${p.name}
+`# ${p.name}
 ### ${p.tagline}
 
-${socialBadges.join('&nbsp;&nbsp;')}
-
-</div>`
+${socialBadges.join(' ')}`
     );
   }
 
@@ -516,6 +514,56 @@ ${projectBlocks.join('\n\n---\n\n')}`
     );
   }
 
+  // OTHER PROJECTS SECTION
+  if (s.other_projects && otherProjects.length > 0) {
+    const otherBlocks = [];
+
+    for (const project of otherProjects) {
+      const customMeta = config.featured_projects.custom_metadata[project.name] || {};
+      const title = customMeta.title || project.name;
+      const description = customMeta.description || project.description || 'Public engineering repository.';
+
+      const badges = [];
+      if (project.stargazers_count > 0) {
+        badges.push(`![Stars](https://img.shields.io/badge/stars-%E2%98%85%20${project.stargazers_count}-yellow?style=flat-square)`);
+      }
+      if (project.releases && project.releases.length > 0) {
+        badges.push(`![Release](https://img.shields.io/badge/release-${project.releases[0].tag_name}-blue?style=flat-square)`);
+      }
+      if (project.license) {
+        badges.push(`![License](https://img.shields.io/badge/license-${encodeURIComponent(project.license.spdx_id || 'MIT')}-green?style=flat-square)`);
+      }
+
+      const techList = [];
+      if (project.language) techList.push(`\`${project.language}\``);
+      if (project.topics && project.topics.length > 0) {
+        project.topics.slice(0, 5).forEach(t => techList.push(`\`${t}\``));
+      }
+
+      let highlightsMd = '';
+      if (customMeta.highlights && customMeta.highlights.length > 0) {
+        highlightsMd = '\n' + customMeta.highlights.map(h => `  - ${h}`).join('\n');
+      }
+
+      otherBlocks.push(
+`### [${title}](${project.html_url})
+${badges.join(' ')}
+
+${description}
+${highlightsMd}
+
+- **Technologies:** ${techList.join(' · ') || '\`Code\`'}
+- **Repository:** [github.com/${project.full_name}](${project.html_url})`
+      );
+    }
+
+    parts.push(
+`## Other Projects
+
+${otherBlocks.join('\n\n---\n\n')}`
+    );
+  }
+
   // TECH STACK SECTION
   if (s.tech_stack) {
     const catalog = config.tech_stack_catalog;
@@ -566,22 +614,18 @@ ${coreList}`
 
     const cards = [];
     if (opts.show_stats_card !== false) {
-      cards.push(`<img height="165" src="${baseUrl}/api?username=${p.username}&show_icons=true&theme=${theme}${hideBorder}&include_all_commits=true&count_private=false" alt="${p.name}'s GitHub Stats" />`);
+      cards.push(`[![${p.name}'s GitHub Stats](${baseUrl}/api?username=${p.username}&show_icons=true&theme=${theme}${hideBorder}&include_all_commits=true&count_private=false)](https://github.com/${p.username})`);
     }
     if (opts.show_streak_card) {
-      cards.push(`<img height="165" src="https://streak-stats.demolab.com/?user=${p.username}&theme=${theme}${hideBorder}" alt="${p.name}'s Streak Stats" />`);
+      cards.push(`[![${p.name}'s Streak Stats](https://streak-stats.demolab.com/?user=${p.username}&theme=${theme}${hideBorder})](https://github.com/${p.username})`);
     }
     if (opts.show_langs_card !== false) {
-      cards.push(`<img height="165" src="${baseUrl}/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}${excludeParam}" alt="Top Languages" />`);
+      cards.push(`[![Top Languages](${baseUrl}/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}${excludeParam})](https://github.com/${p.username})`);
     }
-
-    const cardsHtml = cards.length > 0
-      ? `\n<a href="https://github.com/${p.username}">\n  ${cards.join('\n  ')}\n</a>\n`
-      : '';
 
     const showTable = opts.show_table === true;
     const tableHtml = showTable
-      ? `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n| **Public Repositories** | \`${user.public_repos}\` | **Followers** | \`${user.followers}\` |\n| **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |\n\n<br />`
+      ? `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n| **Public Repositories** | \`${user.public_repos}\` | **Followers** | \`${user.followers}\` |\n| **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |\n\n`
       : '';
 
     const sectionTitle = showTable ? '## GitHub Activity & Metrics' : '## GitHub Activity';
@@ -589,17 +633,13 @@ ${coreList}`
     const innerBlocks = [];
     if (tableHtml) innerBlocks.push(tableHtml);
     if (cards.length > 0) {
-      innerBlocks.push(`<a href="https://github.com/${p.username}">\n  ${cards.join('\n  ')}\n</a>`);
+      innerBlocks.push(cards.join('\n\n'));
     }
 
     parts.push(
 `${sectionTitle}
 
-<div align="center">
-
-${innerBlocks.join('\n\n')}
-
-</div>`
+${innerBlocks.join('\n\n')}`
     );
   }
 
@@ -642,7 +682,6 @@ ${innerBlocks.join('\n\n')}
 
     const contentBlocks = [];
     if (tableRows.length > 0) contentBlocks.push(tableRows.join('\n'));
-    if (tableRows.length > 0 && cardElements.length > 0) contentBlocks.push('<br />');
     if (cardElements.length > 0) contentBlocks.push(cardElements.join('\n'));
 
     const sectionTitle = showTable ? '## Algorithmic & LeetCode Metrics' : '## LeetCode Stats';
@@ -651,12 +690,8 @@ ${innerBlocks.join('\n\n')}
       parts.push(
 `${sectionTitle}
 
-<div align="center">
-
-${contentBlocks.join('\n\n')}
-
-</div>`
-    );
+${contentBlocks.join('\n\n')}`
+      );
     }
   }
 
@@ -690,11 +725,7 @@ ${achievementItems}`
     parts.push(
 `---
 
-<div align="center">
-
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/${p.username}/${p.username}/actions) · Last synced: \`${nowUtc}\`*
-
-</div>`
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/${p.username}/${p.username}/actions) · Last synced: \`${nowUtc}\`*`
     );
   }
 

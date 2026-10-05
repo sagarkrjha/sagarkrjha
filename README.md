@@ -1,11 +1,7 @@
-<div align="center">
-
 # Sagar Kumar Jha
 ### Software Engineer · Systems & Developer Tooling
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/devsagarkumarjha)&nbsp;&nbsp;[![X (Twitter)](https://img.shields.io/badge/X%20(Twitter)-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/devsagarkrjha)&nbsp;&nbsp;[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=black)](https://leetcode.com/u/devsagarkrjha/)&nbsp;&nbsp;[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.com/users/894502933801107476)&nbsp;&nbsp;[![Resume](https://img.shields.io/badge/Resume-Download-0078D4?style=flat-square&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/sagarkrjha/sagarkrjha/main/assets/sagar-resume.pdf)
-
-</div>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/devsagarkumarjha) [![X (Twitter)](https://img.shields.io/badge/X%20(Twitter)-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/devsagarkrjha) [![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=black)](https://leetcode.com/u/devsagarkrjha/) [![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.com/users/894502933801107476) [![Resume](https://img.shields.io/badge/Resume-Download-0078D4?style=flat-square&logo=adobeacrobatreader&logoColor=white)](https://raw.githubusercontent.com/sagarkrjha/sagarkrjha/main/assets/sagar-resume.pdf)
 
 ## About Me
 
@@ -54,7 +50,7 @@ Developer-focused snippet knowledge system across desktop, VS Code, and web. Bui
 - **Technologies:** `TypeScript` · `ai` · `code-snippets` · `developer-tools` · `electron` · `gemini`
 - **Repository:** [github.com/sagarkrjha/codeshelf](https://github.com/sagarkrjha/codeshelf)
 
----
+## Other Projects
 
 ### [portfolio-web](https://github.com/sagarkrjha/portfolio-web)
 
@@ -95,23 +91,15 @@ Supported by real repository code and active systems development:
 
 ## GitHub Activity
 
-<div align="center">
+[![Sagar Kumar Jha's GitHub Stats](https://github-readme-stats-fast.vercel.app/api?username=sagarkrjha&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false)](https://github.com/sagarkrjha)
 
-<a href="https://github.com/sagarkrjha">
-  <img height="165" src="https://github-readme-stats-fast.vercel.app/api?username=sagarkrjha&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false" alt="Sagar Kumar Jha's GitHub Stats" />
-  <img height="165" src="https://streak-stats.demolab.com/?user=sagarkrjha&theme=tokyonight&hide_border=true" alt="Sagar Kumar Jha's Streak Stats" />
-  <img height="165" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=sagarkrjha&layout=compact&theme=tokyonight&hide_border=true&exclude_repo=sagarkrjha" alt="Top Languages" />
-</a>
+[![Sagar Kumar Jha's Streak Stats](https://streak-stats.demolab.com/?user=sagarkrjha&theme=tokyonight&hide_border=true)](https://github.com/sagarkrjha)
 
-</div>
+[![Top Languages](https://github-readme-stats-fast.vercel.app/api/top-langs/?username=sagarkrjha&layout=compact&theme=tokyonight&hide_border=true&exclude_repo=sagarkrjha)](https://github.com/sagarkrjha)
 
 ## LeetCode Stats
 
-<div align="center">
-
 [![LeetCode Stats](https://leetcard.jacoblin.cool/devsagarkrjha?theme=dark&font=Inter&ext=heatmap)](https://leetcode.com/u/devsagarkrjha/)
-
-</div>
 
 ## Milestones & Achievements
 
@@ -132,8 +120,4 @@ Supported by real repository code and active systems development:
 
 ---
 
-<div align="center">
-
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-05 06:29 UTC`*
-
-</div>
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-05 06:42 UTC`*

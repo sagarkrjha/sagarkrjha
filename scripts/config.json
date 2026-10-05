@@ -22,6 +22,7 @@
     "about": true,
     "currently_building": true,
     "featured_projects": true,
+    "other_projects": true,
     "tech_stack": true,
     "metrics": true,
     "leetcode": true,
