@@ -5,12 +5,13 @@
     "role": "Software Engineer",
     "tagline": "Software Engineer · Systems & Developer Tooling",
     "bio": "I build robust systems, developer tools, and low-level software from first principles. Currently exploring version control internals, content-addressable storage, and systems programming in modern C++.",
-    "location": "",
+    "location": "Delhi, India",
     "socials": {
       "linkedin": "https://linkedin.com/in/devsagarkumarjha",
       "twitter": "https://x.com/devsagarkrjha",
       "leetcode": "https://leetcode.com/u/devsagarkrjha/",
       "discord": "https://discord.com/users/894502933801107476",
+      "resume": "https://raw.githubusercontent.com/sagarkrjha/sagarkrjha/main/assets/sagar-resume.pdf",
       "instagram": "",
       "youtube": "",
       "email": ""
@@ -30,7 +31,7 @@
   },
   "featured_projects": {
     "max_count": 6,
-    "pinned": ["minigit"],
+    "pinned": ["minigit", "codeshelf"],
     "exclude": ["sagarkrjha"],
     "include_forks": false,
     "custom_metadata": {
@@ -42,6 +43,16 @@
           "DAG-based commit history and branch management",
           "Two-phase staging index & DP diff engine",
           "Automated cross-platform releases for Windows, Linux, and macOS"
+        ]
+      },
+      "codeshelf": {
+        "title": "CodeShelf",
+        "description": "Developer-focused snippet knowledge system across desktop, VS Code, and web. Built with TypeScript, React 19, Electron, and a pnpm monorepo architecture.",
+        "highlights": [
+          "Offline-first snippet knowledge system with pnpm monorepo architecture",
+          "Semantic snippet search and technology normalization using Jaccard similarity (~1.1 ms)",
+          "Web Streams compression pipelines with real-time metrics",
+          "Automated cross-platform releases for Windows, macOS, and Linux"
         ]
       }
     }

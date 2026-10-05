@@ -17,6 +17,7 @@ on:
       - 'scripts/**'
       - 'package.json'
       - '.github/workflows/**'
+      - 'assets/**'
 
 permissions:
   contents: write

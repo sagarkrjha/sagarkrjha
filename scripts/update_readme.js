@@ -411,6 +411,9 @@ function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, fe
     if (p.socials.discord) {
       socialBadges.push(`[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white)](${p.socials.discord})`);
     }
+    if (p.socials.resume) {
+      socialBadges.push(`[![Resume](https://img.shields.io/badge/Resume-Download-0078D4?style=flat-square&logo=adobeacrobatreader&logoColor=white)](${p.socials.resume})`);
+    }
 
     parts.push(
 `<div align="center">
@@ -427,16 +430,16 @@ ${socialBadges.join('&nbsp;&nbsp;')}
   // ABOUT ME SECTION
   if (s.about) {
     const aboutBulletPoints = [
-      `- 🔭 **Focus Area:** Systems Programming, Version Control Internals, Developer Tooling, and High-Performance Software.`,
-      `- ⚙️ **Philosophy:** Understanding complex abstractions by building them from first principles.`
+      `- **Focus Area:** Systems Programming, Version Control Internals, Developer Tooling, and High-Performance Software.`,
+      `- **Philosophy:** Understanding complex abstractions by building them from first principles.`
     ];
     if (p.location && p.location.trim()) {
-      aboutBulletPoints.push(`- 📍 **Location:** ${p.location.trim()}`);
+      aboutBulletPoints.push(`- **Location:** ${p.location.trim()}`);
     }
-    aboutBulletPoints.push(`- 💼 **Status:** Open to software engineering roles & technical collaborations.`);
+    aboutBulletPoints.push(`- **Status:** Open to software engineering roles & technical collaborations.`);
 
     parts.push(
-`## 📌 About Me
+`## About Me
 
 ${p.bio}
 
@@ -452,7 +455,7 @@ ${aboutBulletPoints.join('\n')}`
     const releaseBadge = latestRelease ? ` [![Latest Release](https://img.shields.io/badge/release-${latestRelease}-blue.svg?style=flat-square)](${activeRepo.html_url}/releases)` : '';
 
     parts.push(
-`## ⚡ Currently Building
+`## Currently Building
 
 ### [${repoTitle}](${activeRepo.html_url})${releaseBadge}
 > ${customMeta.description || activeRepo.description || 'Active development'}
@@ -495,7 +498,7 @@ ${aboutBulletPoints.join('\n')}`
       }
 
       projectBlocks.push(
-`### 📁 [${title}](${project.html_url})
+`### [${title}](${project.html_url})
 ${badges.join(' ')}
 
 ${description}
@@ -507,7 +510,7 @@ ${highlightsMd}
     }
 
     parts.push(
-`## 🚀 Featured Projects
+`## Featured Projects
 
 ${projectBlocks.join('\n\n---\n\n')}`
     );
@@ -537,7 +540,7 @@ ${projectBlocks.join('\n\n---\n\n')}`
     const coreList = catalog.core_competencies.map(c => `- **${c}**`).join('\n');
 
     parts.push(
-`## 🛠️ Technical Stack & Tooling
+`## Technical Stack & Tooling
 
 Supported by real repository code and active systems development:
 
@@ -547,7 +550,7 @@ Supported by real repository code and active systems development:
 | **Systems & Core Tooling** | ${systemsBadges.join(' ')} |
 | **DevOps & Build Infrastructure** | ${devopsBadges.join(' ')} |
 
-### 🧠 Core Competencies & Architecture
+### Core Competencies & Architecture
 ${coreList}`
     );
   }
@@ -581,7 +584,7 @@ ${coreList}`
       ? `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n| **Public Repositories** | \`${user.public_repos}\` | **Followers** | \`${user.followers}\` |\n| **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |\n\n<br />`
       : '';
 
-    const sectionTitle = showTable ? '## 📊 GitHub Activity & Metrics' : '## 📊 GitHub Activity';
+    const sectionTitle = showTable ? '## GitHub Activity & Metrics' : '## GitHub Activity';
 
     const innerBlocks = [];
     if (tableHtml) innerBlocks.push(tableHtml);
@@ -618,7 +621,7 @@ ${innerBlocks.join('\n\n')}
       const contestRankStr = leetcodeData.contestRanking
         ? `\`${leetcodeData.contestRanking.toLocaleString('en-US')}${leetcodeData.totalParticipants ? ` / ${leetcodeData.totalParticipants.toLocaleString('en-US')}` : ''}\``
         : '`N/A`';
-      const badgeStr = leetcodeData.badge ? `\`${leetcodeData.badge} ⚔️\`` : '`Knight`';
+      const badgeStr = leetcodeData.badge ? `\`${leetcodeData.badge}\`` : '`Knight`';
 
       tableRows.push(
 `| Metric | Value | Metric | Value |
@@ -642,7 +645,7 @@ ${innerBlocks.join('\n\n')}
     if (tableRows.length > 0 && cardElements.length > 0) contentBlocks.push('<br />');
     if (cardElements.length > 0) contentBlocks.push(cardElements.join('\n'));
 
-    const sectionTitle = showTable ? '## ⚔️ Algorithmic & LeetCode Metrics' : '## ⚔️ LeetCode Stats';
+    const sectionTitle = showTable ? '## Algorithmic & LeetCode Metrics' : '## LeetCode Stats';
 
     if (contentBlocks.length > 0) {
       parts.push(
@@ -653,7 +656,7 @@ ${innerBlocks.join('\n\n')}
 ${contentBlocks.join('\n\n')}
 
 </div>`
-      );
+    );
     }
   }
 
@@ -664,7 +667,7 @@ ${contentBlocks.join('\n\n')}
     }).join('\n');
 
     parts.push(
-`## 🏆 Milestones & Achievements
+`## Milestones & Achievements
 
 ${achievementItems}`
     );
@@ -673,7 +676,7 @@ ${achievementItems}`
   // LEARNING & INTERESTS SECTION
   if (s.interests) {
     parts.push(
-`## 🧭 Engineering Focus & Current Interests
+`## Engineering Focus & Current Interests
 
 - **Low-Level Systems:** Memory management, cache-conscious data structures, and POSIX system calls.
 - **Developer Infrastructure:** Build systems (CMake), continuous integration/delivery, and reproducible builds.
