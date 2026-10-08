@@ -14,16 +14,16 @@ I build robust systems, developer tools, and low-level software from first princ
 
 ## Currently Building
 
-### [MiniGit](https://github.com/sagarkrjha/minigit) [![Latest Release](https://img.shields.io/badge/release-v1.11.3-blue.svg?style=flat-square)](https://github.com/sagarkrjha/minigit/releases)
+### [MiniGit](https://github.com/sagarkrjha/minigit) [![Latest Release](https://img.shields.io/badge/release-v1.12.0-blue.svg?style=flat-square)](https://github.com/sagarkrjha/minigit/releases)
 > A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
 
 - **Recent Focus:** First-principles Git architecture in modern C++20 with SHA-256 CAS, staging index, and cross-platform CI/CD automation.
-- **Active Repository:** [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) · *Last updated: Oct 7, 2026*
+- **Active Repository:** [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) · *Last updated: Oct 8, 2026*
 
 ## Featured Projects
 
 ### [MiniGit](https://github.com/sagarkrjha/minigit)
-![Stars](https://img.shields.io/badge/stars-%E2%98%85%2014-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.11.3-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Stars](https://img.shields.io/badge/stars-%E2%98%85%2014-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v1.12.0-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
 
@@ -103,8 +103,8 @@ Supported by real repository code and active systems development:
 
 ## Milestones & Achievements
 
-- Shipped **MiniGit v1.11.3**
-  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.11.3))
+- Shipped **MiniGit v1.12.0**
+  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0))
 - Shipped **CodeShelf v0.3.3**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.3))
 - Achieved **LeetCode Guardian** · **2382 Contest Rating** (Top 0.36% globally)
@@ -120,4 +120,4 @@ Supported by real repository code and active systems development:
 
 ---
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-08 04:21 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-08 12:00 UTC`*
