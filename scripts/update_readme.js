@@ -186,6 +186,74 @@ async function fetchLeetCode(username) {
 }
 
 /**
+ * Helper to fetch GitHub telemetry metrics (commits, prs, issues, streak, loc)
+ */
+async function fetchTelemetry(username) {
+  const result = {
+    commits: null,
+    prs: null,
+    issues: null,
+    contributions: null,
+    currentStreak: null,
+    longestStreak: null,
+    loc: null
+  };
+
+  const safeFetchText = async (url, timeoutMs = 8000) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timer);
+      if (!res.ok) return null;
+      return await res.text();
+    } catch {
+      clearTimeout(timer);
+      return null;
+    }
+  };
+
+  try {
+    const [statsText, streakText, locText] = await Promise.all([
+      safeFetchText(`https://github-readme-stats-fast.vercel.app/api?username=${username}`),
+      safeFetchText(`https://streak-stats.demolab.com/?user=${username}`),
+      safeFetchText(`https://readme-line-counter.vercel.app/${username}?category=lines&theme=sunset`, 10000)
+    ]);
+
+    if (statsText) {
+      const commitsMatch = statsText.match(/Total Commits[^:]*:\s*<\/text>\s*<text[^>]*>\s*([0-9,]+)/i);
+      const prsMatch = statsText.match(/Total PRs:\s*<\/text>\s*<text[^>]*>\s*([0-9,]+)/i);
+      const issuesMatch = statsText.match(/Total Issues:\s*<\/text>\s*<text[^>]*>\s*([0-9,]+)/i);
+      if (commitsMatch) result.commits = commitsMatch[1];
+      if (prsMatch) result.prs = prsMatch[1];
+      if (issuesMatch) result.issues = issuesMatch[1];
+    }
+
+    if (streakText) {
+      const contribMatch = streakText.match(/Total Contributions[\s\S]*?<text[^>]*>\s*([0-9,]+)\s*<\/text>/i)
+        || streakText.match(/<text[^>]*font-size=.28px.[^>]*>\s*([0-9,]+)\s*<\/text>[\s\S]*?Total Contributions/i);
+      const currentStreakMatch = streakText.match(/Current Streak[\s\S]*?<text[^>]*>\s*([0-9,]+)\s*<\/text>/i)
+        || streakText.match(/<text[^>]*font-size=.28px.[^>]*>\s*([0-9,]+)\s*<\/text>[\s\S]*?Current Streak/i);
+      const longestStreakMatch = streakText.match(/Longest Streak[\s\S]*?<text[^>]*>\s*([0-9,]+)\s*<\/text>/i)
+        || streakText.match(/<text[^>]*font-size=.28px.[^>]*>\s*([0-9,]+)\s*<\/text>[\s\S]*?Longest Streak/i);
+
+      if (contribMatch) result.contributions = contribMatch[1];
+      if (currentStreakMatch) result.currentStreak = currentStreakMatch[1];
+      if (longestStreakMatch) result.longestStreak = longestStreakMatch[1];
+    }
+
+    if (locText) {
+      const locMatch = locText.match(/<text[^>]*font-size="72"[^>]*>\s*([0-9,]+)\s*<\/text>/);
+      if (locMatch) result.loc = locMatch[1];
+    }
+  } catch (err) {
+    console.warn(`⚠️  Failed to fetch telemetry metrics: ${err.message}`);
+  }
+
+  return result;
+}
+
+/**
  * Main generator logic
  */
 async function run() {
@@ -303,7 +371,11 @@ async function run() {
   // 3. Fetch LeetCode stats (if enabled for metrics or achievements)
   let leetcodeData = null;
   const lcUsername = config.leetcode?.username || 'devsagarkrjha';
-  if ((config.sections?.leetcode || config.sections?.achievements !== false) && lcUsername) {
+  const showLcAchievements = config.leetcode?.show_achievements !== false;
+  const showLcRating = config.leetcode?.show_rating !== false;
+  const showLcBadge = config.leetcode?.show_badge !== false;
+
+  if ((config.sections?.leetcode || (config.sections?.achievements !== false && showLcAchievements)) && lcUsername) {
     console.log(`📡 Fetching LeetCode data for @${lcUsername}...`);
     leetcodeData = await fetchLeetCode(lcUsername);
     if (leetcodeData) {
@@ -311,15 +383,31 @@ async function run() {
     }
   }
 
-  if (leetcodeData && leetcodeData.contestRating) {
-    const badgeName = leetcodeData.badge ? `LeetCode ${leetcodeData.badge}` : 'LeetCode Competitive Programmer';
-    const topPercentStr = leetcodeData.topPercentage ? ` (Top ${leetcodeData.topPercentage}% globally)` : '';
-    achievements.push({
-      type: 'leetcode',
-      title: `Achieved **${badgeName}** · **${leetcodeData.contestRating} Contest Rating**${topPercentStr}`,
-      description: `Solved **${leetcodeData.totalSolved}+ algorithmic problems** (${leetcodeData.hardSolved} Hard, ${leetcodeData.mediumSolved} Medium) with a peak contest rating of **${leetcodeData.contestRating}**.`,
-      link: `https://leetcode.com/u/${lcUsername}/`
-    });
+  if (showLcAchievements && leetcodeData && (showLcRating || showLcBadge || leetcodeData.totalSolved > 0)) {
+    if (showLcRating && leetcodeData.contestRating) {
+      const badgeName = (showLcBadge && leetcodeData.badge) ? `LeetCode ${leetcodeData.badge}` : 'LeetCode Competitive Programmer';
+      const topPercentStr = leetcodeData.topPercentage ? ` (Top ${leetcodeData.topPercentage}% globally)` : '';
+      achievements.push({
+        type: 'leetcode',
+        title: `Achieved **${badgeName}** · **${leetcodeData.contestRating} Contest Rating**${topPercentStr}`,
+        description: `Solved **${leetcodeData.totalSolved}+ algorithmic problems** (${leetcodeData.hardSolved} Hard, ${leetcodeData.mediumSolved} Medium) with a peak contest rating of **${leetcodeData.contestRating}**.`,
+        link: `https://leetcode.com/u/${lcUsername}/`
+      });
+    } else if (showLcBadge && leetcodeData.badge) {
+      achievements.push({
+        type: 'leetcode',
+        title: `Achieved **LeetCode ${leetcodeData.badge}**`,
+        description: `Solved **${leetcodeData.totalSolved}+ algorithmic problems** (${leetcodeData.hardSolved} Hard, ${leetcodeData.mediumSolved} Medium).`,
+        link: `https://leetcode.com/u/${lcUsername}/`
+      });
+    } else if (leetcodeData.totalSolved > 0) {
+      achievements.push({
+        type: 'leetcode',
+        title: `Solved **${leetcodeData.totalSolved}+ Algorithmic Problems** on LeetCode`,
+        description: `Demonstrated algorithmic problem solving across ${leetcodeData.hardSolved} Hard and ${leetcodeData.mediumSolved} Medium challenges.`,
+        link: `https://leetcode.com/u/${lcUsername}/`
+      });
+    }
   }
 
   if (totalStars >= 5) {
@@ -331,7 +419,13 @@ async function run() {
     });
   }
 
-  // 4. Assemble Markdown sections
+  // 4. Fetch telemetry metrics (commits, prs, issues, streaks, lines of code)
+  console.log('📡 Fetching GitHub telemetry & activity metrics...');
+  const telemetry = await fetchTelemetry(username);
+  if (telemetry.loc) console.log(`  ↳ Lines of Code: ${telemetry.loc}`);
+  if (telemetry.contributions) console.log(`  ↳ Contributions: ${telemetry.contributions}`);
+
+  // 5. Assemble Markdown sections
   console.log('📝 Assembling README markdown...');
   const markdown = buildMarkdown({
     config,
@@ -341,9 +435,11 @@ async function run() {
     languageBytes,
     featuredProjects,
     otherProjects,
+    validRepos,
     activeRepo,
     achievements,
-    leetcodeData
+    leetcodeData,
+    telemetry
   });
 
   // 4. Change detection
@@ -383,87 +479,94 @@ async function run() {
 /**
  * Builds the complete Markdown string from fetched data
  */
-function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, featuredProjects, otherProjects = [], activeRepo, achievements, leetcodeData }) {
+function buildMarkdown({ config, user, totalStars, totalForks, languageBytes, featuredProjects, otherProjects = [], validRepos = [], activeRepo, achievements, leetcodeData, telemetry = {} }) {
   const p = config.profile;
   const s = config.sections;
   const parts = [];
 
-  // HEADER SECTION
+  // HEADER SECTION (Resume Contact Header)
   if (s.header) {
-    const socialBadges = [];
+    const contactLinks = [];
+    if (p.socials.github) {
+      contactLinks.push(`[GitHub](${p.socials.github})`);
+    }
     if (p.socials.linkedin) {
-      socialBadges.push(`[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](${p.socials.linkedin})`);
+      contactLinks.push(`[LinkedIn](${p.socials.linkedin})`);
     }
     if (p.socials.twitter) {
-      socialBadges.push(`[![X (Twitter)](https://img.shields.io/badge/X%20(Twitter)-000000?style=flat-square&logo=x&logoColor=white)](${p.socials.twitter})`);
-    }
-    if (p.socials.github) {
-      socialBadges.push(`[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](${p.socials.github})`);
+      contactLinks.push(`[X / Twitter](${p.socials.twitter})`);
     }
     if (p.socials.leetcode) {
-      socialBadges.push(`[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=black)](${p.socials.leetcode})`);
+      contactLinks.push(`[LeetCode](${p.socials.leetcode})`);
+    }
+    if (p.socials.discord) {
+      contactLinks.push(`[Discord](${p.socials.discord})`);
     }
     if (p.socials.email) {
       const emailUrl = p.socials.email.startsWith('mailto:') ? p.socials.email : `mailto:${p.socials.email}`;
-      socialBadges.push(`[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](${emailUrl})`);
-    }
-    if (p.socials.youtube) {
-      socialBadges.push(`[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](${p.socials.youtube})`);
-    }
-    if (p.socials.discord) {
-      socialBadges.push(`[![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white)](${p.socials.discord})`);
+      contactLinks.push(`[Email](${emailUrl})`);
     }
     if (p.socials.resume) {
-      socialBadges.push(`[![Resume](https://img.shields.io/badge/Resume-Download-0078D4?style=flat-square&logo=adobeacrobatreader&logoColor=white)](${p.socials.resume})`);
+      contactLinks.push(`[Resume](${p.socials.resume})`);
     }
+
+    const locationLine = p.location ? ` · *${p.location}*` : '';
 
     parts.push(
 `# ${p.name}
-### ${p.tagline}
+**${p.tagline}**${locationLine}
 
-${socialBadges.join(' ')}`
+${contactLinks.join(' · ')}`
     );
   }
 
-  // ABOUT ME SECTION
+  // 1. SUMMARY / ABOUT ME (Resume Professional Summary)
   if (s.about) {
-    const aboutBulletPoints = [
-      `- **Focus Area:** Systems Programming, Version Control Internals, Developer Tooling, and High-Performance Software.`,
-      `- **Philosophy:** Understanding complex abstractions by building them from first principles.`
+    const summaryBullets = [
+      `- **Focus:** Systems Programming, Version Control Internals, Developer Tooling, High-Performance Software.`,
+      `- **Philosophy:** Understanding complex abstractions by engineering them from first principles.`,
+      `- **Status:** Open to software engineering roles & technical collaborations.`
     ];
-    if (p.location && p.location.trim()) {
-      aboutBulletPoints.push(`- **Location:** ${p.location.trim()}`);
-    }
-    aboutBulletPoints.push(`- **Status:** Open to software engineering roles & technical collaborations.`);
 
     parts.push(
-`## About Me
+`## Summary
 
 ${p.bio}
 
-${aboutBulletPoints.join('\n')}`
+${summaryBullets.join('\n')}`
     );
   }
 
-  // CURRENTLY BUILDING SECTION
-  if (s.currently_building && activeRepo) {
-    const customMeta = config.featured_projects.custom_metadata[activeRepo.name] || {};
-    const repoTitle = customMeta.title || activeRepo.name;
-    const latestRelease = activeRepo.releases && activeRepo.releases.length > 0 ? activeRepo.releases[0].tag_name : null;
-    const releaseBadge = latestRelease ? ` [![Latest Release](https://img.shields.io/badge/release-${latestRelease}-blue.svg?style=flat-square)](${activeRepo.html_url}/releases)` : '';
+  // 2. TECHNICAL SKILLS (Resume Technical Skills)
+  if (s.tech_stack) {
+    const catalog = config.tech_stack_catalog;
+    const detectedLangNames = new Set(Object.keys(languageBytes));
+    // Also include primary repo languages from enriched repos
+    for (const repo of validRepos || []) {
+      if (repo.language) detectedLangNames.add(repo.language);
+    }
+    const languagesList = [];
+    for (const [key, item] of Object.entries(catalog.languages)) {
+      if (detectedLangNames.size === 0 || detectedLangNames.has(key) || key === 'C++' || key === 'C' || key === 'TypeScript') {
+        languagesList.push(item.label || key);
+      }
+    }
+
+    const systemsList = Object.values(catalog.systems_and_tooling).map(item => item.label);
+    const devopsList = Object.values(catalog.devops_and_ci).map(item => item.label);
+    const coreList = catalog.core_competencies.join(' · ');
 
     parts.push(
-`## Currently Building
+`## Technical Skills
 
-### [${repoTitle}](${activeRepo.html_url})${releaseBadge}
-> ${customMeta.description || activeRepo.description || 'Active development'}
-
-- **Recent Focus:** First-principles Git architecture in modern C++20 with SHA-256 CAS, staging index, and cross-platform CI/CD automation.
-- **Active Repository:** [\`${activeRepo.full_name}\`](${activeRepo.html_url}) · *Last updated: ${formatDate(activeRepo.pushed_at)}*`
+- **Languages:** ${languagesList.map(l => `\`${l}\``).join(', ')}
+- **Systems & Core Tooling:** ${systemsList.map(s => `\`${s}\``).join(', ')}
+- **DevOps & Infrastructure:** ${devopsList.map(d => `\`${d}\``).join(', ')}
+- **Architecture & Competencies:** ${coreList}`
     );
   }
 
-  // FEATURED PROJECTS SECTION
+  // 3. PROJECTS (Resume Projects Section)
   if (s.featured_projects && featuredProjects.length > 0) {
     const projectBlocks = [];
 
@@ -471,261 +574,176 @@ ${aboutBulletPoints.join('\n')}`
       const customMeta = config.featured_projects.custom_metadata[project.name] || {};
       const title = customMeta.title || project.name;
       const description = customMeta.description || project.description || 'Public engineering repository.';
-      
-      const badges = [];
-      if (project.stargazers_count > 0) {
-        badges.push(`![Stars](https://img.shields.io/badge/stars-%E2%98%85%20${project.stargazers_count}-yellow?style=flat-square)`);
-      }
-      if (project.releases && project.releases.length > 0) {
-        badges.push(`![Release](https://img.shields.io/badge/release-${project.releases[0].tag_name}-blue?style=flat-square)`);
-      }
-      if (project.license) {
-        badges.push(`![License](https://img.shields.io/badge/license-${encodeURIComponent(project.license.spdx_id || 'MIT')}-green?style=flat-square)`);
-      }
 
-      // Tech tags
-      const techList = [];
-      if (project.language) techList.push(`\`${project.language}\``);
-      if (project.topics && project.topics.length > 0) {
-        project.topics.slice(0, 5).forEach(t => techList.push(`\`${t}\``));
+      const metaTokens = [];
+      if (project.language) metaTokens.push(`\`${project.language}\``);
+      if (project.stargazers_count > 0) metaTokens.push(`★ ${project.stargazers_count}`);
+      if (project.releases && project.releases.length > 0) {
+        metaTokens.push(`Release: [${project.releases[0].tag_name}](${project.releases[0].html_url || project.html_url})`);
       }
+      metaTokens.push(`[Repository](${project.html_url})`);
 
       let highlightsMd = '';
       if (customMeta.highlights && customMeta.highlights.length > 0) {
-        highlightsMd = '\n' + customMeta.highlights.map(h => `  - ${h}`).join('\n');
+        highlightsMd = '\n' + customMeta.highlights.map(h => `- ${h}`).join('\n');
       }
 
       projectBlocks.push(
 `### [${title}](${project.html_url})
-${badges.join(' ')}
+*${metaTokens.join(' · ')}*
 
 ${description}
-${highlightsMd}
-
-- **Technologies:** ${techList.join(' · ') || '\`C++\`'}
-- **Repository:** [github.com/${project.full_name}](${project.html_url})`
+${highlightsMd}`
       );
     }
 
     parts.push(
 `## Featured Projects
 
-${projectBlocks.join('\n\n---\n\n')}`
+${projectBlocks.join('\n\n')}`
     );
   }
 
-  // OTHER PROJECTS SECTION
+  // 4. OTHER PROJECTS (Resume Additional Projects)
   if (s.other_projects && otherProjects.length > 0) {
-    const otherBlocks = [];
-
-    for (const project of otherProjects) {
+    const otherItems = otherProjects.map(project => {
       const customMeta = config.featured_projects.custom_metadata[project.name] || {};
       const title = customMeta.title || project.name;
       const description = customMeta.description || project.description || 'Public engineering repository.';
-
-      const badges = [];
-      if (project.stargazers_count > 0) {
-        badges.push(`![Stars](https://img.shields.io/badge/stars-%E2%98%85%20${project.stargazers_count}-yellow?style=flat-square)`);
-      }
-      if (project.releases && project.releases.length > 0) {
-        badges.push(`![Release](https://img.shields.io/badge/release-${project.releases[0].tag_name}-blue?style=flat-square)`);
-      }
-      if (project.license) {
-        badges.push(`![License](https://img.shields.io/badge/license-${encodeURIComponent(project.license.spdx_id || 'MIT')}-green?style=flat-square)`);
-      }
-
-      const techList = [];
-      if (project.language) techList.push(`\`${project.language}\``);
-      if (project.topics && project.topics.length > 0) {
-        project.topics.slice(0, 5).forEach(t => techList.push(`\`${t}\``));
-      }
-
-      let highlightsMd = '';
-      if (customMeta.highlights && customMeta.highlights.length > 0) {
-        highlightsMd = '\n' + customMeta.highlights.map(h => `  - ${h}`).join('\n');
-      }
-
-      otherBlocks.push(
-`### [${title}](${project.html_url})
-${badges.join(' ')}
-
-${description}
-${highlightsMd}
-
-- **Technologies:** ${techList.join(' · ') || '\`Code\`'}
-- **Repository:** [github.com/${project.full_name}](${project.html_url})`
-      );
-    }
+      const lang = project.language ? `\`${project.language}\` · ` : '';
+      return `- **[${title}](${project.html_url})** — ${lang}${description}`;
+    });
 
     parts.push(
-`## Other Projects
+`## Additional Projects
 
-${otherBlocks.join('\n\n---\n\n')}`
+${otherItems.join('\n')}`
     );
   }
 
-  // TECH STACK SECTION
-  if (s.tech_stack) {
-    const catalog = config.tech_stack_catalog;
-
-    // Detect languages present in repos
-    const detectedLangNames = Object.keys(languageBytes);
-    const languagesBadges = [];
-    for (const [key, item] of Object.entries(catalog.languages)) {
-      if (detectedLangNames.includes(key) || key === 'C++' || key === 'C') {
-        languagesBadges.push(`![${item.label}](https://img.shields.io/badge/${item.badge})`);
-      }
-    }
-
-    const systemsBadges = Object.values(catalog.systems_and_tooling).map(
-      item => `![${item.label}](https://img.shields.io/badge/${item.badge})`
-    );
-
-    const devopsBadges = Object.values(catalog.devops_and_ci).map(
-      item => `![${item.label}](https://img.shields.io/badge/${item.badge})`
-    );
-
-    const coreList = catalog.core_competencies.map(c => `- **${c}**`).join('\n');
+  // 5. CURRENT FOCUS (Currently Building)
+  if (s.currently_building && activeRepo) {
+    const customMeta = config.featured_projects.custom_metadata[activeRepo.name] || {};
+    const repoTitle = customMeta.title || activeRepo.name;
 
     parts.push(
-`## Technical Stack & Tooling
+`## Current Focus
 
-Supported by real repository code and active systems development:
-
-| Category | Technologies & Tools |
-| :--- | :--- |
-| **Languages** | ${languagesBadges.join(' ')} |
-| **Systems & Core Tooling** | ${systemsBadges.join(' ')} |
-| **DevOps & Build Infrastructure** | ${devopsBadges.join(' ')} |
-
-### Core Competencies & Architecture
-${coreList}`
+- **Active Development:** [**${repoTitle}**](${activeRepo.html_url}) — ${customMeta.description || activeRepo.description || 'Active development'}
+- **Recent Work:** Modern C++20 implementation of Git internals with SHA-256 CAS, staging index, and cross-platform releases.`
     );
   }
 
-  // GITHUB STATS & ACTIVITY SECTION
+  // 6. METRICS & ACTIVITY (Resume Technical Activity)
   if (s.metrics) {
     const opts = config.display_options || {};
-    const baseUrl = opts.stats_base_url || 'https://github-readme-stats-fast.vercel.app';
-    const theme = opts.stats_theme || 'tokyonight';
-    const hideBorder = opts.hide_stats_border ? '&hide_border=true' : '';
-    const excludeRepos = (config.featured_projects?.exclude || []).join(',');
-    const excludeParam = excludeRepos ? `&exclude_repo=${excludeRepos}` : '';
+    const metricsRows = [
+      { label: 'Public Repositories', value: `\`${user.public_repos}\`` },
+      { label: 'Total Stars Earned', value: `\`${totalStars}\`` }
+    ];
 
-    const cards = [];
-    if (opts.show_stats_card !== false) {
-      cards.push(`[![${p.name}'s GitHub Stats](${baseUrl}/api?username=${p.username}&show_icons=true&theme=${theme}${hideBorder}&include_all_commits=true&count_private=false)](https://github.com/${p.username})`);
-    }
-    if (opts.show_streak_card) {
-      cards.push(`[![${p.name}'s Streak Stats](https://streak-stats.demolab.com/?user=${p.username}&theme=${theme}${hideBorder})](https://github.com/${p.username})`);
-    }
-    if (opts.show_langs_card !== false) {
-      cards.push(`[![Top Languages](${baseUrl}/api/top-langs/?username=${p.username}&layout=compact&theme=${theme}${hideBorder}${excludeParam})](https://github.com/${p.username})`);
+    if (telemetry.loc && opts.show_loc !== false) {
+      metricsRows.push({ label: 'Total Lines of Code', value: `\`${telemetry.loc}\`` });
     }
 
-    const showTable = opts.show_table === true;
-    const tableHtml = showTable
-      ? `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n| **Public Repositories** | \`${user.public_repos}\` | **Followers** | \`${user.followers}\` |\n| **Stars Earned** | \`${totalStars}\` | **Following** | \`${user.following}\` |\n\n`
-      : '';
-
-    const sectionTitle = showTable ? '## GitHub Activity & Metrics' : '## GitHub Activity';
-
-    const innerBlocks = [];
-    if (tableHtml) innerBlocks.push(tableHtml);
-    if (cards.length > 0) {
-      innerBlocks.push(cards.join('\n\n'));
+    if (telemetry.contributions && opts.show_contributions !== false) {
+      metricsRows.push({ label: 'Public Contributions', value: `\`${telemetry.contributions}\`` });
     }
+
+    if (telemetry.commits) {
+      metricsRows.push({ label: 'Total Commits', value: `\`${telemetry.commits}\`` });
+    }
+
+    if (telemetry.prs) {
+      metricsRows.push({ label: 'Pull Requests Opened', value: `\`${telemetry.prs}\`` });
+    }
+
+    if (telemetry.currentStreak) {
+      metricsRows.push({ label: 'Current Streak', value: `\`${telemetry.currentStreak} days\`` });
+    }
+
+    if (telemetry.longestStreak) {
+      metricsRows.push({ label: 'Longest Streak', value: `\`${telemetry.longestStreak} days\`` });
+    }
+
+    metricsRows.push({ label: 'Followers', value: `\`${user.followers}\`` });
+    metricsRows.push({ label: 'Following', value: `\`${user.following}\`` });
+
+    const pairedRows = [];
+    for (let i = 0; i < metricsRows.length; i += 2) {
+      const left = metricsRows[i];
+      const right = metricsRows[i + 1] || { label: '', value: '' };
+      pairedRows.push(`| **${left.label}** | ${left.value} | ${right.label ? `**${right.label}**` : ''} | ${right.value} |`);
+    }
+
+    const tableMd = `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n${pairedRows.join('\n')}`;
+
+    const totalCodeBytes = Object.values(languageBytes).reduce((acc, b) => acc + b, 0);
+    const topLanguages = Object.entries(languageBytes)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([lang, bytes]) => {
+        const pct = totalCodeBytes > 0 ? ((bytes / totalCodeBytes) * 100).toFixed(1) : 0;
+        return `\`${lang}\` (${pct}%)`;
+      });
+    const langLine = topLanguages.length > 0 ? `\n\n- **Codebase Composition:** ${topLanguages.join(' · ')}` : '';
 
     parts.push(
-`${sectionTitle}
+`## Engineering Activity
 
-${innerBlocks.join('\n\n')}`
+${tableMd}${langLine}`
     );
   }
 
-  // LEETCODE SECTION
-  if (s.leetcode) {
+  // 7. LEETCODE (Algorithmic Problem Solving)
+  if (s.leetcode && leetcodeData) {
     const lcConfig = config.leetcode || {};
     const lcUser = lcConfig.username || 'devsagarkrjha';
-    const lcTheme = lcConfig.theme || 'dark';
-    const lcFont = lcConfig.font ? `&font=${encodeURIComponent(lcConfig.font)}` : '';
-    const lcExt = lcConfig.ext ? `&ext=${encodeURIComponent(lcConfig.ext)}` : '';
-    const showTable = lcConfig.show_table === true;
-    const showCard = lcConfig.show_card !== false;
 
-    const tableRows = [];
-    if (showTable && leetcodeData) {
-      const ratingStr = leetcodeData.contestRating
-        ? `\`${leetcodeData.contestRating}\`${leetcodeData.topPercentage ? ` (Top ${leetcodeData.topPercentage}%)` : ''}`
-        : '`N/A`';
-      const contestRankStr = leetcodeData.contestRanking
-        ? `\`${leetcodeData.contestRanking.toLocaleString('en-US')}${leetcodeData.totalParticipants ? ` / ${leetcodeData.totalParticipants.toLocaleString('en-US')}` : ''}\``
-        : '`N/A`';
-      const badgeStr = leetcodeData.badge ? `\`${leetcodeData.badge}\`` : '`Knight`';
+    const cells = [];
+    cells.push({ label: 'Problems Solved', value: `\`${leetcodeData.totalSolved}\`` });
+    cells.push({ label: 'Hard Solved', value: `\`${leetcodeData.hardSolved}\`` });
+    cells.push({ label: 'Medium Solved', value: `\`${leetcodeData.mediumSolved}\`` });
+    cells.push({ label: 'Easy Solved', value: `\`${leetcodeData.easySolved}\`` });
 
-      tableRows.push(
-`| Metric | Value | Metric | Value |
-| :--- | :---: | :--- | :---: |
-| **Contest Rating** | ${ratingStr} | **Global Contest Rank** | ${contestRankStr} |
-| **Problems Solved** | \`${leetcodeData.totalSolved}\` | **Badge** | ${badgeStr} |
-| **Hard Solved** | \`${leetcodeData.hardSolved}\` | **Medium Solved** | \`${leetcodeData.mediumSolved}\` |`
-      );
+    const pairs = [];
+    for (let i = 0; i < cells.length; i += 2) {
+      const left = cells[i];
+      const right = cells[i + 1] || { label: '', value: '' };
+      pairs.push(`| **${left.label}** | ${left.value} | ${right.label ? `**${right.label}**` : ''} | ${right.value} |`);
     }
 
-    const cardElements = [];
-    if (showCard) {
-      const cardUrl = `https://leetcard.jacoblin.cool/${lcUser}?theme=${lcTheme}${lcFont}${lcExt}`;
-      cardElements.push(
-`[![LeetCode Stats](${cardUrl})](https://leetcode.com/u/${lcUser}/)`
-      );
-    }
+    const tableMd = `| Metric | Value | Metric | Value |\n| :--- | :---: | :--- | :---: |\n${pairs.join('\n')}`;
 
-    const contentBlocks = [];
-    if (tableRows.length > 0) contentBlocks.push(tableRows.join('\n'));
-    if (cardElements.length > 0) contentBlocks.push(cardElements.join('\n'));
+    parts.push(
+`## Problem Solving & Algorithms
 
-    const sectionTitle = showTable ? '## Algorithmic & LeetCode Metrics' : '## LeetCode Stats';
+${tableMd}
 
-    if (contentBlocks.length > 0) {
-      parts.push(
-`${sectionTitle}
-
-${contentBlocks.join('\n\n')}`
-      );
-    }
+- **LeetCode Profile:** [leetcode.com/u/${lcUser}](https://leetcode.com/u/${lcUser}/)`
+    );
   }
 
-  // ACHIEVEMENTS & MILESTONES SECTION
+  // 8. ACHIEVEMENTS & MILESTONES (Resume Honors / Highlights)
   if (s.achievements && achievements.length > 0) {
     const achievementItems = achievements.map(a => {
-      return `- ${a.title}\n  *${a.description}* ([View](${a.link}))`;
+      return `- ${a.title} — *${a.description}* ([View](${a.link}))`;
     }).join('\n');
 
     parts.push(
-`## Milestones & Achievements
+`## Milestones & Highlights
 
 ${achievementItems}`
     );
   }
 
-  // LEARNING & INTERESTS SECTION
-  if (s.interests) {
-    parts.push(
-`## Engineering Focus & Current Interests
-
-- **Low-Level Systems:** Memory management, cache-conscious data structures, and POSIX system calls.
-- **Developer Infrastructure:** Build systems (CMake), continuous integration/delivery, and reproducible builds.
-- **Storage Engines:** Content-addressable storage (CAS), Merkle trees, and cryptographic verification.`
-    );
-  }
-
-  // FOOTER SECTION
+  // 9. FOOTER
   if (s.footer) {
     const nowUtc = new Date().toISOString().replace('T', ' ').substring(0, 16) + ' UTC';
     parts.push(
 `---
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/${p.username}/${p.username}/actions) · Last synced: \`${nowUtc}\`*`
+*Profile generated dynamically via [GitHub Actions](https://github.com/${p.username}/${p.username}/actions) · Last synced: \`${nowUtc}\`*`
     );
   }
 

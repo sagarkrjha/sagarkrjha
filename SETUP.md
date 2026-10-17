@@ -163,21 +163,30 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
     }
   },
   "display_options": {
+    "format": "text",            // "text" for clean monochrome Markdown tables, or "cards" for SVG cards
     "stats_base_url": "https://github-readme-stats-fast.vercel.app", // Endpoint for stats & language cards
-    "stats_theme": "tokyonight", // Theme for GitHub stats card
+    "stats_theme": "tokyonight", // Theme for GitHub stats card (when format is "cards")
     "hide_stats_border": true,
-    "show_stats_card": true,
-    "show_streak_card": true,    // Toggle GitHub Streak stats card
-    "show_langs_card": true,
-    "show_table": false          // Toggle GitHub repositories/followers table
+    "show_stats_card": false,
+    "show_streak_card": false,
+    "show_langs_card": false,
+    "show_loc_card": false,
+    "show_contributions_graph": false,
+    "show_table": false,
+    "show_loc": true,            // Display Total Lines of Code in text metrics table
+    "show_contributions": true   // Display Public Contributions in text metrics table
   },
   "leetcode": {
     "username": "devsagarkrjha", // LeetCode handle
-    "theme": "dark",             // Theme for LeetCode stats card (dark, transparent, light, etc.)
+    "format": "text",            // "text" for monochrome Markdown table, or "cards" for SVG card
+    "theme": "dark",             // Theme for LeetCode stats card (when format is "cards")
     "font": "Inter",             // Font family for LeetCode card
     "ext": "heatmap",            // Card extension (e.g. heatmap, activity)
-    "show_table": false,         // Display live summary metrics table
-    "show_card": true            // Display LeetCode SVG card
+    "show_table": false,
+    "show_card": false,
+    "show_rating": false,        // Toggle contest rating visibility
+    "show_badge": false,         // Toggle contest badge visibility (e.g. Guardian/Knight)
+    "show_achievements": false   // Toggle LeetCode highlight in Milestones & Achievements
   }
 }
 ```

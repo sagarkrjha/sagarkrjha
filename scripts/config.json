@@ -88,20 +88,29 @@
     ]
   },
   "display_options": {
+    "format": "text",
     "stats_base_url": "https://github-readme-stats-fast.vercel.app",
     "stats_theme": "tokyonight",
     "hide_stats_border": true,
-    "show_stats_card": true,
-    "show_streak_card": true,
-    "show_langs_card": true,
-    "show_table": false
+    "show_stats_card": false,
+    "show_streak_card": false,
+    "show_langs_card": false,
+    "show_loc_card": false,
+    "show_contributions_graph": false,
+    "show_table": false,
+    "show_loc": true,
+    "show_contributions": true
   },
   "leetcode": {
     "username": "devsagarkrjha",
+    "format": "text",
     "theme": "dark",
     "font": "Inter",
     "ext": "heatmap",
     "show_table": false,
-    "show_card": true
+    "show_card": false,
+    "show_rating": false,
+    "show_badge": false,
+    "show_achievements": false
   }
 }
