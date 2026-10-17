@@ -23,31 +23,31 @@ I build robust systems, developer tools, and low-level software from first princ
 ### [MiniGit](https://github.com/sagarkrjha/minigit)
 *`C++` · ★ 14 · Release: [v1.12.0](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0) · [Repository](https://github.com/sagarkrjha/minigit)*
 
-A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
+A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, and Git Smart HTTP wire synchronization.
 
-- SHA-256 Content-Addressable Storage (CAS)
-- DAG-based commit history and branch management
-- Two-phase staging index & DP diff engine
-- Automated cross-platform releases for Windows, Linux, and macOS
+- SHA-256 Content-Addressable Storage (CAS) with flattened immutable object trees
+- Eugene Myers' dynamic programming $O(ND)$ diff algorithm with visual patch inspection
+- Bounded packfile delta chains ($O(1)$ unpack) and wire-compatible Git Smart HTTP v1 client
+- Automated cross-platform releases and pre-compiled native binaries for Windows, Linux, and macOS
 
 ### [CodeShelf](https://github.com/sagarkrjha/codeshelf)
 *`TypeScript` · ★ 1 · Release: [v0.3.6](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6) · [Repository](https://github.com/sagarkrjha/codeshelf)*
 
-Developer-focused snippet knowledge system across desktop, VS Code, and web. Built with TypeScript, React 19, Electron, and a pnpm monorepo architecture.
+Developer snippet and knowledge management system spanning desktop, VS Code extension, and web. Local-first workspace with technology normalization, weighted lexical search, Myers diff revision history, and optional Gemini AI autofill.
 
-- Offline-first snippet knowledge system with pnpm monorepo architecture
-- Semantic snippet search and technology normalization using Jaccard similarity (~1.1 ms)
-- Web Streams compression pipelines with real-time metrics
-- Automated cross-platform releases for Windows, macOS, and Linux
+- Local-first atomic disk storage (~/.codeshelf/) with bidirectional desktop-to-IDE synchronization
+- Weighted lexical search, prefix filters (lang:, tag:, domain:), and technology taxonomy normalization
+- Automatic revision snapshotting with visual Myers diff rollback and compressed JSON exports
+- Cross-platform releases across Windows (NSIS), macOS (DMG), Linux (AppImage/deb), and VS Code Marketplace
 
 ## Additional Projects
 
-- **[portfolio-web](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · My portfolio website as a Software developer to show case my personal work and stats.
-- **[next-mdx-starter](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · A modern, reusable starter template built with Next.js (App Router), Tailwind CSS v4, Biome, shadcn/ui, Radix UI, next-themes, and Hugeicons.
+- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
+- **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
 
-- **Active Development:** [**MiniGit**](https://github.com/sagarkrjha/minigit) — A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.
+- **Active Development:** [**MiniGit**](https://github.com/sagarkrjha/minigit) — A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, and Git Smart HTTP wire synchronization.
 - **Recent Work:** Modern C++20 implementation of Git internals with SHA-256 CAS, staging index, and cross-platform releases.
 
 ## Engineering Activity
@@ -79,4 +79,4 @@ Developer-focused snippet knowledge system across desktop, VS Code, and web. Bui
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-17 08:57 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-17 09:30 UTC`*

@@ -38,23 +38,31 @@
     "custom_metadata": {
       "minigit": {
         "title": "MiniGit",
-        "description": "A Git-compatible version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, two-phase staging index, dynamic programming diff calculation, and branch management.",
+        "description": "A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, and Git Smart HTTP wire synchronization.",
         "highlights": [
-          "SHA-256 Content-Addressable Storage (CAS)",
-          "DAG-based commit history and branch management",
-          "Two-phase staging index & DP diff engine",
-          "Automated cross-platform releases for Windows, Linux, and macOS"
+          "SHA-256 Content-Addressable Storage (CAS) with flattened immutable object trees",
+          "Eugene Myers' dynamic programming $O(ND)$ diff algorithm with visual patch inspection",
+          "Bounded packfile delta chains ($O(1)$ unpack) and wire-compatible Git Smart HTTP v1 client",
+          "Automated cross-platform releases and pre-compiled native binaries for Windows, Linux, and macOS"
         ]
       },
       "codeshelf": {
         "title": "CodeShelf",
-        "description": "Developer-focused snippet knowledge system across desktop, VS Code, and web. Built with TypeScript, React 19, Electron, and a pnpm monorepo architecture.",
+        "description": "Developer snippet and knowledge management system spanning desktop, VS Code extension, and web. Local-first workspace with technology normalization, weighted lexical search, Myers diff revision history, and optional Gemini AI autofill.",
         "highlights": [
-          "Offline-first snippet knowledge system with pnpm monorepo architecture",
-          "Semantic snippet search and technology normalization using Jaccard similarity (~1.1 ms)",
-          "Web Streams compression pipelines with real-time metrics",
-          "Automated cross-platform releases for Windows, macOS, and Linux"
+          "Local-first atomic disk storage (~/.codeshelf/) with bidirectional desktop-to-IDE synchronization",
+          "Weighted lexical search, prefix filters (lang:, tag:, domain:), and technology taxonomy normalization",
+          "Automatic revision snapshotting with visual Myers diff rollback and compressed JSON exports",
+          "Cross-platform releases across Windows (NSIS), macOS (DMG), Linux (AppImage/deb), and VS Code Marketplace"
         ]
+      },
+      "portfolio-web": {
+        "title": "Config-Driven Portfolio",
+        "description": "High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync."
+      },
+      "next-mdx-starter": {
+        "title": "Next.js MDX Starter Template",
+        "description": "Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support."
       }
     }
   },
