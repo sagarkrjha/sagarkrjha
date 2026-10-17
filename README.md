@@ -23,12 +23,13 @@ I build robust systems, developer tools, and low-level software from first princ
 ### [MiniGit](https://github.com/sagarkrjha/minigit)
 *`C++` · ★ 14 · Release: [v1.12.0](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0) · [Repository](https://github.com/sagarkrjha/minigit)*
 
-A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, and Git Smart HTTP wire synchronization.
+A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, Git Smart HTTP wire synchronization, Docker containers, and multi-language SDKs (Rust, Python, Go, JS/TS, Java).
 
-- SHA-256 Content-Addressable Storage (CAS) with flattened immutable object trees
+- SHA-256 Content-Addressable Storage (CAS) with flattened immutable object trees and atomic indexing
 - Eugene Myers' dynamic programming $O(ND)$ diff algorithm with visual patch inspection
-- Bounded packfile delta chains ($O(1)$ unpack) and wire-compatible Git Smart HTTP v1 client
-- Automated cross-platform releases and pre-compiled native binaries for Windows, Linux, and macOS
+- Multi-language SDKs (`minigit-sdk`) with programmatic client bindings for Rust, Python, Go, TypeScript/Node.js, and Java
+- Bounded packfile delta chains ($O(1)$ unpack time) and wire-compatible Git Smart HTTP v1 client
+- Containerized Docker distribution and automated cross-platform releases for Windows, Linux, and macOS
 
 ### [CodeShelf](https://github.com/sagarkrjha/codeshelf)
 *`TypeScript` · ★ 1 · Release: [v0.3.6](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6) · [Repository](https://github.com/sagarkrjha/codeshelf)*
@@ -47,7 +48,7 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ## Current Focus
 
-- **Active Development:** [**MiniGit**](https://github.com/sagarkrjha/minigit) — A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, and Git Smart HTTP wire synchronization.
+- **Active Development:** [**MiniGit**](https://github.com/sagarkrjha/minigit) — A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, Git Smart HTTP wire synchronization, Docker containers, and multi-language SDKs (Rust, Python, Go, JS/TS, Java).
 - **Recent Work:** Modern C++20 implementation of Git internals with SHA-256 CAS, staging index, and cross-platform releases.
 
 ## Engineering Activity
@@ -56,7 +57,7 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `6` | **Total Stars Earned** | `15` |
 | **Total Lines of Code** | `73,038` | **Public Contributions** | `440` |
-| **Total Commits** | `249` | **Pull Requests Opened** | `23` |
+| **Total Commits** | `250` | **Pull Requests Opened** | `23` |
 | **Current Streak** | `3 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
@@ -79,4 +80,4 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-17 09:31 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-17 09:42 UTC`*
