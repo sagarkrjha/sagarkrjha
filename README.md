@@ -38,7 +38,7 @@ A Git-compatible version control system implemented from first principles in mod
 ---
 
 ### [CodeShelf](https://github.com/sagarkrjha/codeshelf)
-![Stars](https://img.shields.io/badge/stars-%E2%98%85%201-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v0.3.5-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Stars](https://img.shields.io/badge/stars-%E2%98%85%201-yellow?style=flat-square) ![Release](https://img.shields.io/badge/release-v0.3.6-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 Developer-focused snippet knowledge system across desktop, VS Code, and web. Built with TypeScript, React 19, Electron, and a pnpm monorepo architecture.
 
@@ -105,8 +105,8 @@ Supported by real repository code and active systems development:
 
 - Shipped **MiniGit v1.12.0**
   *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0))
-- Shipped **CodeShelf v0.3.5**
-  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.5))
+- Shipped **CodeShelf v0.3.6**
+  *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6))
 - Achieved **LeetCode Guardian** · **2279 Contest Rating** (Top 0.61% globally)
   *Solved **722+ algorithmic problems** (150 Hard, 364 Medium) with a peak contest rating of **2279**.* ([View](https://leetcode.com/u/devsagarkrjha/))
 - Earned **15+ GitHub Stars** across open-source systems projects.
@@ -120,4 +120,4 @@ Supported by real repository code and active systems development:
 
 ---
 
-*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-15 11:04 UTC`*
+*Automated profile system generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-17 02:52 UTC`*
