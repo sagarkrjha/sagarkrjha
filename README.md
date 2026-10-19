@@ -13,7 +13,7 @@ I build robust systems, developer tools, and low-level software from first princ
 
 ## Technical Skills
 
-- **Languages:** `C++20`, `C`, `JavaScript`, `TypeScript`, `Bash / Shell`
+- **Languages:** `C++20`, `C`, `JavaScript`, `TypeScript`
 - **Systems & Core Tooling:** `CMake`, `OpenSSL (SHA-256)`, `Zlib`, `Git Internals`, `Linux / POSIX`, `Windows API`
 - **DevOps & Infrastructure:** `GitHub Actions`, `Docker`, `GCC / Clang / MSVC`
 - **Architecture & Competencies:** Content-Addressable Storage (CAS) · Directed Acyclic Graph (DAG) Topologies · Dynamic Programming Diff Algorithms · Cryptographic Hashing & Data Integrity · Systems Programming & Memory Management
@@ -43,8 +43,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ## Additional Projects
 
-- **[vsprof](https://github.com/sagarkrjha/vsprof)** — `Shell` · Public engineering repository.
 - **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
+- **[cp-workspace](https://github.com/sagarkrjha/cp-workspace)** — `C++` · ⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
@@ -57,12 +57,12 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `8` | **Total Stars Earned** | `15` |
-| **Total Lines of Code** | `86,804` | **Public Contributions** | `455` |
-| **Total Commits** | `262` | **Pull Requests Opened** | `23` |
+| **Total Lines of Code** | `85,034` | **Public Contributions** | `445` |
+| **Total Commits** | `252` | **Pull Requests Opened** | `23` |
 | **Current Streak** | `4 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
-- **Codebase Composition:** `C++` (45.7%) · `TypeScript` (45.0%) · `Shell` (5.0%) · `MDX` (1.4%) · `CSS` (1.2%)
+- **Codebase Composition:** `C++` (48.2%) · `TypeScript` (47.4%) · `MDX` (1.5%) · `CSS` (1.3%) · `CMake` (0.5%)
 
 ## Problem Solving & Algorithms
 
@@ -81,4 +81,4 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-18 02:54 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-19 03:07 UTC`*
