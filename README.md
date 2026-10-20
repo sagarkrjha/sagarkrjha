@@ -43,8 +43,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ## Additional Projects
 
-- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[cp-workspace](https://github.com/sagarkrjha/cp-workspace)** — `C++` · ⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
+- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
@@ -56,10 +56,10 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `8` | **Total Stars Earned** | `15` |
+| **Public Repositories** | `8` | **Total Stars Earned** | `16` |
 | **Total Lines of Code** | `85,034` | **Public Contributions** | `445` |
 | **Total Commits** | `252` | **Pull Requests Opened** | `23` |
-| **Current Streak** | `4 days` | **Longest Streak** | `12 days` |
+| **Current Streak** | `0 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
 - **Codebase Composition:** `C++` (48.2%) · `TypeScript` (47.4%) · `MDX` (1.5%) · `CSS` (1.3%) · `CMake` (0.5%)
@@ -77,8 +77,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 - Shipped **MiniGit v1.12.0** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0))
 - Shipped **CodeShelf v0.3.6** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6))
-- Earned **15+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
+- Earned **16+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-19 03:07 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-20 03:16 UTC`*
