@@ -38,8 +38,9 @@
     "custom_metadata": {
       "minigit": {
         "title": "MiniGit",
-        "description": "A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, Git Smart HTTP wire synchronization, Docker containers, and multi-language SDKs (Rust, Python, Go, JS/TS, Java).",
+        "description": "A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, Git Smart HTTP wire synchronization, Docker containers, and multi-language SDKs (Rust, Python, Go, JS/TS, Java).\n\n[![XERJ Corpus Hub contributor](https://hub.xerj.org/contributors/sagarkrjha/badge.svg)](https://hub.xerj.org/contributors/sagarkrjha.html)",
         "highlights": [
+          "Selected for the [XERJ Corpus Hub](https://hub.xerj.org/contributors/sagarkrjha.html) as a verified reference implementation for AI coding agents",
           "SHA-256 Content-Addressable Storage (CAS) with flattened immutable object trees and atomic indexing",
           "Eugene Myers' dynamic programming $O(ND)$ diff algorithm with visual patch inspection",
           "Multi-language SDKs (`minigit-sdk`) with programmatic client bindings for Rust, Python, Go, TypeScript/Node.js, and Java",

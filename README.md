@@ -25,6 +25,9 @@ I build robust systems, developer tools, and low-level software from first princ
 
 A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, Git Smart HTTP wire synchronization, Docker containers, and multi-language SDKs (Rust, Python, Go, JS/TS, Java).
 
+[![XERJ Corpus Hub contributor](https://hub.xerj.org/contributors/sagarkrjha/badge.svg)](https://hub.xerj.org/contributors/sagarkrjha.html)
+
+- Selected for the [XERJ Corpus Hub](https://hub.xerj.org/contributors/sagarkrjha.html) as a verified reference implementation for AI coding agents
 - SHA-256 Content-Addressable Storage (CAS) with flattened immutable object trees and atomic indexing
 - Eugene Myers' dynamic programming $O(ND)$ diff algorithm with visual patch inspection
 - Multi-language SDKs (`minigit-sdk`) with programmatic client bindings for Rust, Python, Go, TypeScript/Node.js, and Java
@@ -56,13 +59,13 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `8` | **Total Stars Earned** | `16` |
-| **Total Lines of Code** | `85,034` | **Public Contributions** | `445` |
-| **Total Commits** | `252` | **Pull Requests Opened** | `23` |
-| **Current Streak** | `0 days` | **Longest Streak** | `12 days` |
+| **Public Repositories** | `8` | **Total Stars Earned** | `17` |
+| **Total Lines of Code** | `85,091` | **Public Contributions** | `449` |
+| **Total Commits** | `256` | **Pull Requests Opened** | `23` |
+| **Current Streak** | `1 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
-- **Codebase Composition:** `C++` (48.2%) · `TypeScript` (47.4%) · `MDX` (1.5%) · `CSS` (1.3%) · `CMake` (0.5%)
+- **Codebase Composition:** `C++` (48.1%) · `TypeScript` (47.5%) · `MDX` (1.5%) · `CSS` (1.3%) · `CMake` (0.5%)
 
 ## Problem Solving & Algorithms
 
@@ -75,10 +78,11 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ## Milestones & Highlights
 
+- Recognized as **XERJ Corpus Hub Contributor** — *Work in [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) selected as open reference memory for AI coding agents.* ([View](https://hub.xerj.org/contributors/sagarkrjha.html))
 - Shipped **MiniGit v1.12.0** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0))
 - Shipped **CodeShelf v0.3.6** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6))
-- Earned **16+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
+- Earned **17+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-20 03:16 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-20 10:42 UTC`*

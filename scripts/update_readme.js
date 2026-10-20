@@ -353,6 +353,14 @@ async function run() {
 
   // Determine achievements
   const achievements = [];
+
+  // XERJ Corpus Hub contributor recognition
+  achievements.push({
+    type: 'curation',
+    title: 'Recognized as **XERJ Corpus Hub Contributor**',
+    description: 'Work in [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) selected as open reference memory for AI coding agents.',
+    link: 'https://hub.xerj.org/contributors/sagarkrjha.html'
+  });
   for (const repo of enrichedRepos) {
     if (repo.releases && repo.releases.length > 0) {
       const latestRelease = repo.releases[0];
@@ -625,11 +633,14 @@ ${otherItems.join('\n')}`
   if (s.currently_building && activeRepo) {
     const customMeta = config.featured_projects.custom_metadata[activeRepo.name] || {};
     const repoTitle = customMeta.title || activeRepo.name;
+    const desc = customMeta.description || activeRepo.description || 'Active development';
+    // Clean description of badges for bullet point presentation
+    const cleanDesc = desc.replace(/\n\n\[!\[.*?\]\(.*?\)\]\(.*?\)/g, '');
 
     parts.push(
 `## Current Focus
 
-- **Active Development:** [**${repoTitle}**](${activeRepo.html_url}) — ${customMeta.description || activeRepo.description || 'Active development'}
+- **Active Development:** [**${repoTitle}**](${activeRepo.html_url}) — ${cleanDesc}
 - **Recent Work:** Modern C++20 implementation of Git internals with SHA-256 CAS, staging index, and cross-platform releases.`
     );
   }
