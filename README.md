@@ -62,7 +62,7 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 | **Public Repositories** | `8` | **Total Stars Earned** | `17` |
 | **Total Lines of Code** | `85,100` | **Public Contributions** | `450` |
 | **Total Commits** | `257` | **Pull Requests Opened** | `23` |
-| **Current Streak** | `1 days` | **Longest Streak** | `12 days` |
+| **Current Streak** | `0 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
 - **Codebase Composition:** `C++` (48.1%) · `TypeScript` (47.5%) · `MDX` (1.5%) · `CSS` (1.3%) · `CMake` (0.5%)
@@ -85,4 +85,4 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-21 03:11 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-22 03:10 UTC`*
