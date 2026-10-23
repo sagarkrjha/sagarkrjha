@@ -47,8 +47,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 ## Additional Projects
 
 - **[cp-workspace](https://github.com/sagarkrjha/cp-workspace)** — `C++` · ⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
-- **[level-db-cpp](https://github.com/sagarkrjha/level-db-cpp)** — `C++` · A fast, lightweight C++20 LSM-tree storage engine inspired by Google's LevelDB
 - **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
+- **[level-db-cpp](https://github.com/sagarkrjha/level-db-cpp)** — `C++` · A fast, lightweight C++20 LSM-tree storage engine inspired by Google's LevelDB
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
@@ -61,9 +61,9 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `9` | **Total Stars Earned** | `17` |
-| **Total Lines of Code** | `86,797` | **Public Contributions** | `461` |
+| **Total Lines of Code** | `86,797` | **Public Contributions** | `470` |
 | **Total Commits** | `263` | **Pull Requests Opened** | `29` |
-| **Current Streak** | `8 days` | **Longest Streak** | `12 days` |
+| **Current Streak** | `9 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
 - **Codebase Composition:** `C++` (52.3%) · `TypeScript` (43.5%) · `MDX` (1.3%) · `CSS` (1.2%) · `CMake` (0.5%)
@@ -86,4 +86,4 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-22 05:28 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-23 03:15 UTC`*
