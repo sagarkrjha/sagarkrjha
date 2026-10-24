@@ -21,7 +21,7 @@ I build robust systems, developer tools, and low-level software from first princ
 ## Featured Projects
 
 ### [MiniGit](https://github.com/sagarkrjha/minigit)
-*`C++` · ★ 14 · Release: [v1.12.0](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0) · [Repository](https://github.com/sagarkrjha/minigit)*
+*`C++` · ★ 13 · Release: [v1.12.0](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0) · [Repository](https://github.com/sagarkrjha/minigit)*
 
 A Git-compatible distributed version control system implemented from first principles in modern C++20. Features SHA-256 content-addressable storage, Eugene Myers' $O(ND)$ diff calculation, two-phase staging index, packfile delta compression, Git Smart HTTP wire synchronization, Docker containers, and multi-language SDKs (Rust, Python, Go, JS/TS, Java).
 
@@ -35,7 +35,7 @@ A Git-compatible distributed version control system implemented from first princ
 - Containerized Docker distribution and automated cross-platform releases for Windows, Linux, and macOS
 
 ### [CodeShelf](https://github.com/sagarkrjha/codeshelf)
-*`TypeScript` · ★ 1 · Release: [v0.3.6](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6) · [Repository](https://github.com/sagarkrjha/codeshelf)*
+*`TypeScript` · Release: [v0.3.6](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6) · [Repository](https://github.com/sagarkrjha/codeshelf)*
 
 Developer snippet and knowledge management system spanning desktop, VS Code extension, and web. Local-first workspace with technology normalization, weighted lexical search, Myers diff revision history, and optional Gemini AI autofill.
 
@@ -60,10 +60,10 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `9` | **Total Stars Earned** | `17` |
-| **Total Lines of Code** | `86,797` | **Public Contributions** | `470` |
+| **Public Repositories** | `9` | **Total Stars Earned** | `15` |
+| **Total Lines of Code** | `86,797` | **Public Contributions** | `473` |
 | **Total Commits** | `263` | **Pull Requests Opened** | `29` |
-| **Current Streak** | `9 days` | **Longest Streak** | `12 days` |
+| **Current Streak** | `3 days` | **Longest Streak** | `12 days` |
 | **Followers** | `27` | **Following** | `22` |
 
 - **Codebase Composition:** `C++` (52.3%) · `TypeScript` (43.5%) · `MDX` (1.3%) · `CSS` (1.2%) · `CMake` (0.5%)
@@ -82,8 +82,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 - Recognized as **XERJ Corpus Hub Contributor** — *Work in [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) selected as open reference memory for AI coding agents.* ([View](https://hub.xerj.org/contributors/sagarkrjha.html))
 - Shipped **MiniGit v1.12.0** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0))
 - Shipped **CodeShelf v0.3.6** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6))
-- Earned **17+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
+- Earned **15+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-23 03:15 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-24 03:09 UTC`*
