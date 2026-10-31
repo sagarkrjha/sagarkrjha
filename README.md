@@ -47,8 +47,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 ## Additional Projects
 
 - **[cp-workspace](https://github.com/sagarkrjha/cp-workspace)** — `C++` · ⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
-- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[level-db-cpp](https://github.com/sagarkrjha/level-db-cpp)** — `C++` · A fast, lightweight C++20 LSM-tree storage engine inspired by Google's LevelDB
+- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
@@ -60,8 +60,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `9` | **Total Stars Earned** | `15` |
-| **Total Lines of Code** | `86,797` | **Public Contributions** | `490` |
+| **Public Repositories** | `9` | **Total Stars Earned** | `16` |
+| **Total Lines of Code** | `86,797` | **Public Contributions** | `495` |
 | **Current Streak** | `16 days` | **Longest Streak** | `16 days` |
 | **Followers** | `28` | **Following** | `22` |
 
@@ -81,8 +81,8 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 - Recognized as **XERJ Corpus Hub Contributor** — *Work in [`sagarkrjha/minigit`](https://github.com/sagarkrjha/minigit) selected as open reference memory for AI coding agents.* ([View](https://hub.xerj.org/contributors/sagarkrjha.html))
 - Shipped **MiniGit v1.12.0** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/minigit/releases/tag/v1.12.0))
 - Shipped **CodeShelf v0.3.6** — *Published native cross-platform binaries with automated GitHub Actions CI/CD.* ([View](https://github.com/sagarkrjha/codeshelf/releases/tag/v0.3.6))
-- Earned **15+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
+- Earned **16+ GitHub Stars** across open-source systems projects. — *Recognized for building first-principles developer tooling and version control architecture.* ([View](https://github.com/sagarkrjha?tab=repositories))
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-30 04:14 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-10-31 03:56 UTC`*
