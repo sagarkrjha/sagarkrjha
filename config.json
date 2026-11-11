@@ -3,8 +3,8 @@
     "username": "sagarkrjha",
     "name": "Sagar Kumar Jha",
     "role": "Software Engineer",
-    "tagline": "Software Engineer · Systems & Developer Tooling",
-    "bio": "I build robust systems, developer tools, and low-level software from first principles. Currently exploring version control internals, content-addressable storage, and systems programming in modern C++.",
+    "tagline": "Software Engineer · Systems, Developer Tooling & Full-Stack",
+    "bio": "I build robust systems, developer tools, and storage engines from first principles. Currently engineering Git-compatible version control internals, LSM-tree storage engines, and cross-platform desktop/IDE tooling across modern C++20, Rust, and TypeScript.",
     "location": "Delhi, India",
     "socials": {
       "linkedin": "https://linkedin.com/in/devsagarkumarjha",
@@ -82,13 +82,23 @@
     "languages": {
       "C++": { "badge": "C%2B%2B-20-00599C?style=flat-square&logo=c%2B%2B&logoColor=white", "label": "C++20" },
       "C": { "badge": "C-00599C?style=flat-square&logo=c&logoColor=white", "label": "C" },
-      "JavaScript": { "badge": "JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black", "label": "JavaScript" },
+      "Rust": { "badge": "Rust-000000?style=flat-square&logo=rust&logoColor=white", "label": "Rust" },
       "TypeScript": { "badge": "TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white", "label": "TypeScript" },
+      "JavaScript": { "badge": "JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black", "label": "JavaScript" },
+      "Go": { "badge": "Go-00ADD8?style=flat-square&logo=go&logoColor=white", "label": "Go" },
+      "Python": { "badge": "Python-3776AB?style=flat-square&logo=python&logoColor=white", "label": "Python" },
       "Shell": { "badge": "Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white", "label": "Bash / Shell" }
+    },
+    "frameworks_and_frontend": {
+      "Next.js": { "badge": "Next.js-000000?style=flat-square&logo=next.js&logoColor=white", "label": "Next.js (App Router)" },
+      "React": { "badge": "React-20232A?style=flat-square&logo=react&logoColor=61DAFB", "label": "React 19" },
+      "Electron": { "badge": "Electron-47848F?style=flat-square&logo=electron&logoColor=white", "label": "Electron" },
+      "Tailwind CSS": { "badge": "Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white", "label": "Tailwind CSS v4" },
+      "Node.js": { "badge": "Node.js-339933?style=flat-square&logo=node.js&logoColor=white", "label": "Node.js" }
     },
     "systems_and_tooling": {
       "CMake": { "badge": "CMake-064F8C?style=flat-square&logo=cmake&logoColor=white", "label": "CMake" },
-      "OpenSSL": { "badge": "OpenSSL-721412?style=flat-square&logo=openssl&logoColor=white", "label": "OpenSSL (SHA-256)" },
+      "OpenSSL": { "badge": "OpenSSL-721412?style=flat-square&logo=openssl&logoColor=white", "label": "OpenSSL (SHA-256 / CRC32)" },
       "Zlib": { "badge": "Zlib-Compression-lightgrey?style=flat-square", "label": "Zlib" },
       "Git": { "badge": "Git-F05032?style=flat-square&logo=git&logoColor=white", "label": "Git Internals" },
       "Linux": { "badge": "Linux-FCC624?style=flat-square&logo=linux&logoColor=black", "label": "Linux / POSIX" },
@@ -101,8 +111,9 @@
     },
     "core_competencies": [
       "Content-Addressable Storage (CAS)",
+      "Log-Structured Merge-tree (LSM-tree)",
       "Directed Acyclic Graph (DAG) Topologies",
-      "Dynamic Programming Diff Algorithms",
+      "Dynamic Programming Diff Algorithms (Myers O(ND))",
       "Cryptographic Hashing & Data Integrity",
       "Systems Programming & Memory Management"
     ]

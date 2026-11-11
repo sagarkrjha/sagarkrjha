@@ -104,6 +104,8 @@ pub struct ProjectCustomMeta {
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct TechStackCatalog {
     pub languages: HashMap<String, TechItem>,
+    #[serde(default)]
+    pub frameworks_and_frontend: HashMap<String, TechItem>,
     pub systems_and_tooling: HashMap<String, TechItem>,
     pub devops_and_ci: HashMap<String, TechItem>,
     pub core_competencies: Vec<String>,
@@ -550,10 +552,15 @@ fn build_markdown(
 
     // 1. SUMMARY
     if s.about {
+        let mut focus_items = Vec::new();
+        focus_items.push("Systems Programming & Storage Engines (LSM-tree, CAS, WAL)".to_string());
+        focus_items.push("Distributed Version Control & Internal Algorithms (Myers $O(ND)$ diff)".to_string());
+        focus_items.push("Cross-Platform Developer Tools (Desktop, CLI, VS Code)".to_string());
+
         let summary_bullets = [
-            "- **Focus:** Systems Programming, Version Control Internals, Developer Tooling, High-Performance Software.",
-            "- **Philosophy:** Understanding complex abstractions by engineering them from first principles.",
-            "- **Status:** Open to software engineering roles & technical collaborations."
+            format!("- **Focus Areas:** {}.", focus_items.join(", ")),
+            "- **Engineering Philosophy:** Understanding complex distributed abstractions by building them from first principles.".to_string(),
+            "- **Open Collaborations:** Open to software engineering roles & systems collaborations.".to_string(),
         ];
 
         parts.push(format!(
@@ -572,18 +579,43 @@ fn build_markdown(
                 detected_langs.insert(lang.clone());
             }
         }
+        // Always include foundational languages demonstrated across repositories and projects
+        detected_langs.insert("Rust".to_string());
+        detected_langs.insert("C++".to_string());
+        detected_langs.insert("C".to_string());
+        detected_langs.insert("TypeScript".to_string());
+        detected_langs.insert("JavaScript".to_string());
 
+        let lang_order = [
+            "C++",
+            "C",
+            "Rust",
+            "TypeScript",
+            "JavaScript",
+            "Go",
+            "Python",
+            "Shell",
+        ];
         let mut languages_list = Vec::new();
-        for key in &["C++", "C", "JavaScript", "TypeScript", "Shell"] {
+        for key in &lang_order {
             if let Some(item) = catalog.languages.get(*key) {
-                if detected_langs.is_empty()
-                    || detected_langs.contains(*key)
-                    || *key == "C++"
-                    || *key == "C"
-                    || *key == "TypeScript"
-                {
+                if detected_langs.contains(*key) {
                     languages_list.push(format!("`{}`", item.label));
                 }
+            }
+        }
+
+        let fw_order = [
+            "Next.js",
+            "React",
+            "Electron",
+            "Tailwind CSS",
+            "Node.js",
+        ];
+        let mut frameworks_list = Vec::new();
+        for key in &fw_order {
+            if let Some(item) = catalog.frameworks_and_frontend.get(*key) {
+                frameworks_list.push(format!("`{}`", item.label));
             }
         }
 
@@ -615,12 +647,18 @@ fn build_markdown(
         }
         let core_list = catalog.core_competencies.join(" · ");
 
+        let mut skill_lines = Vec::new();
+        skill_lines.push(format!("- **Languages:** {}", languages_list.join(", ")));
+        if !frameworks_list.is_empty() {
+            skill_lines.push(format!("- **Frameworks & Full-Stack:** {}", frameworks_list.join(", ")));
+        }
+        skill_lines.push(format!("- **Systems & Storage Tooling:** {}", systems_list.join(", ")));
+        skill_lines.push(format!("- **DevOps & Infrastructure:** {}", devops_list.join(", ")));
+        skill_lines.push(format!("- **Architecture & Competencies:** {}", core_list));
+
         parts.push(format!(
-            "## Technical Skills\n\n- **Languages:** {}\n- **Systems & Core Tooling:** {}\n- **DevOps & Infrastructure:** {}\n- **Architecture & Competencies:** {}",
-            languages_list.join(", "),
-            systems_list.join(", "),
-            devops_list.join(", "),
-            core_list
+            "## Technical Skills\n\n{}",
+            skill_lines.join("\n")
         ));
     }
 

@@ -1,22 +1,23 @@
 # Sagar Kumar Jha
-**Software Engineer · Systems & Developer Tooling** · *Delhi, India*
+**Software Engineer · Systems, Developer Tooling & Full-Stack** · *Delhi, India*
 
 [LinkedIn](https://linkedin.com/in/devsagarkumarjha) · [X / Twitter](https://x.com/devsagarkrjha) · [LeetCode](https://leetcode.com/u/devsagarkrjha/) · [Discord](https://discord.com/users/894502933801107476)
 
 ## Summary
 
-I build robust systems, developer tools, and low-level software from first principles. Currently exploring version control internals, content-addressable storage, and systems programming in modern C++.
+I build robust systems, developer tools, and storage engines from first principles. Currently engineering Git-compatible version control internals, LSM-tree storage engines, and cross-platform desktop/IDE tooling across modern C++20, Rust, and TypeScript.
 
-- **Focus:** Systems Programming, Version Control Internals, Developer Tooling, High-Performance Software.
-- **Philosophy:** Understanding complex abstractions by engineering them from first principles.
-- **Status:** Open to software engineering roles & technical collaborations.
+- **Focus Areas:** Systems Programming & Storage Engines (LSM-tree, CAS, WAL), Distributed Version Control & Internal Algorithms (Myers $O(ND)$ diff), Cross-Platform Developer Tools (Desktop, CLI, VS Code).
+- **Engineering Philosophy:** Understanding complex distributed abstractions by building them from first principles.
+- **Open Collaborations:** Open to software engineering roles & systems collaborations.
 
 ## Technical Skills
 
-- **Languages:** `C++20`, `C`, `JavaScript`, `TypeScript`
-- **Systems & Core Tooling:** `CMake`, `OpenSSL (SHA-256)`, `Zlib`, `Git Internals`, `Linux / POSIX`, `Windows API`
+- **Languages:** `C++20`, `C`, `Rust`, `TypeScript`, `JavaScript`, `Go`, `Python`
+- **Frameworks & Full-Stack:** `Next.js (App Router)`, `React 19`, `Electron`, `Tailwind CSS v4`, `Node.js`
+- **Systems & Storage Tooling:** `CMake`, `OpenSSL (SHA-256 / CRC32)`, `Zlib`, `Git Internals`, `Linux / POSIX`, `Windows API`
 - **DevOps & Infrastructure:** `GitHub Actions`, `Docker`, `GCC / Clang / MSVC`
-- **Architecture & Competencies:** Content-Addressable Storage (CAS) · Directed Acyclic Graph (DAG) Topologies · Dynamic Programming Diff Algorithms · Cryptographic Hashing & Data Integrity · Systems Programming & Memory Management
+- **Architecture & Competencies:** Content-Addressable Storage (CAS) · Log-Structured Merge-tree (LSM-tree) · Directed Acyclic Graph (DAG) Topologies · Dynamic Programming Diff Algorithms (Myers O(ND)) · Cryptographic Hashing & Data Integrity · Systems Programming & Memory Management
 
 ## Featured Projects
 
@@ -95,4 +96,4 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-11 13:22 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-11 13:35 UTC`*
