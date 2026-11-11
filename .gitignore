@@ -1,3 +1,7 @@
+# Cargo & Rust target
+target/
+updater/target/
+
 # Node & Dependencies
 node_modules/
 npm-debug.log*

@@ -21,7 +21,7 @@ This guide explains the architecture, configuration, deployment, and operational
 
 ## 🏛️ Architecture Overview
 
-The system runs completely on native GitHub infrastructure using a lightweight Node.js script executed on a scheduled GitHub Actions runner (`ubuntu-latest`).
+The system runs completely on native GitHub infrastructure using a compiled Rust engine executed on a scheduled GitHub Actions runner (`ubuntu-latest`).
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -29,10 +29,10 @@ The system runs completely on native GitHub infrastructure using a lightweight N
 ├───────────────────┬─────────────────────────────────────────┤
 │ 1. Event Trigger  │ Daily Cron (00:00 UTC) / Manual Dispatch│
 ├───────────────────┼─────────────────────────────────────────┤
-│ 2. API Ingestion  │ GitHub REST API (Users, Repos, Releases)│
+│ 2. API Ingestion  │ GitHub REST & GraphQL API               │
 │                   │ Authenticated via GITHUB_TOKEN          │
 ├───────────────────┼─────────────────────────────────────────┤
-│ 3. Data Processing│ Calculate real stars, active projects,  │
+│ 3. Data Processing│ Dynamic pinned repos, active projects,  │
 │                   │ languages breakdown & real achievements │
 ├───────────────────┼─────────────────────────────────────────┤
 │ 4. Change Check   │ Normalize & diff against existing file  │
@@ -42,9 +42,10 @@ The system runs completely on native GitHub infrastructure using a lightweight N
 ```
 
 ### Key Technical Highlights:
-- **Zero External npm Dependencies:** Built using native Node.js (`fs`, `path`, `fetch`). Fast, lightweight, and immune to dependency supply chain vulnerabilities.
-- **Fail-Safe Operation:** If GitHub API limits or network issues occur, the script aborts cleanly with a non-zero exit code without altering or truncating `README.md`.
-- **Change Detection & Loop Prevention:** Ignores trivial volatile timestamps during equality comparison. Commits are tagged with `[skip ci]` and path-filtered to prevent recursive CI loops.
+- **Native Rust Engine:** Built with modern asynchronous Rust (`tokio`, `reqwest`, `serde`, `chrono`, `regex`). Fast, memory-safe, and self-contained.
+- **Completely Automatic Pinned Projects:** Automatically fetches your GitHub pinned repositories via GraphQL (with profile page HTML scraping and `config.json` fallbacks) and presents them as **Featured Projects**.
+- **Fail-Safe Operation:** If GitHub API limits or network issues occur, the updater aborts cleanly without altering or truncating `README.md`.
+- **Change Detection & Loop Prevention:** Normalizes and compares Markdown content while ignoring trivial volatile timestamps. Commits are tagged with `[skip ci]` and path-filtered to prevent recursive CI loops.
 - **Strict Evidence-Based Content:** All tech stacks, metrics, and project descriptions are derived from real GitHub activity and validated public repositories.
 
 ---
@@ -56,12 +57,16 @@ sagarkrjha/
 ├── .github/
 │   └── workflows/
 │       └── update-profile-readme.yml   # Scheduled & manual GitHub Actions workflow
-├── scripts/
-│   ├── config.json                     # Single centralized configuration file
-│   └── update_readme.js                # Core data fetching and markdown generation engine
-├── package.json                        # Node.js project descriptor and scripts
-├── README.md                           # The generated profile README rendered on GitHub
-└── SETUP.md                            # Detailed documentation and maintenance guide
+├── updater/                            # Pure Rust updater application
+│   ├── Cargo.toml                      # Rust dependencies & build manifest
+│   ├── Cargo.lock
+│   └── src/
+│       └── main.rs                     # Core async fetching and markdown generator
+├── config.json                         # Centralized configuration file
+├── package.json                        # Development scripts (cargo delegation)
+├── README.md                           # Generated profile README rendered on GitHub
+├── SETUP.md                            # Detailed documentation and operations guide
+└── .gitignore                          # Build artifacts and local environment ignores
 ```
 
 ---
@@ -75,61 +80,60 @@ The GitHub Actions workflow requires write permissions to push the updated `READ
 2. Click **Settings** (top menu bar) → **Actions** → **General**.
 3. Scroll down to **Workflow permissions**.
 4. Select **Read and write permissions**.
-5. Ensure the checkbox **"Allow GitHub Actions to create and approve pull requests"** is checked (optional but recommended).
+5. Check the box **Allow GitHub Actions to create and approve pull requests** (optional, recommended).
 6. Click **Save**.
 
-> [!NOTE]
-> The workflow uses the built-in `${{ secrets.GITHUB_TOKEN }}` provided by GitHub Actions runners. You **do not** need to generate or store a Personal Access Token (PAT).
+> [!IMPORTANT]
+> The workflow uses the built-in `${{ secrets.GITHUB_TOKEN }}` provided by GitHub Actions automatically. No Personal Access Tokens (PATs) or manual secret additions are required.
 
 ---
 
-## ⚡ How the Automation Works
+## 🔄 How the Automation Works
 
-1. **Trigger:**
-   - A cron schedule triggers the `.github/workflows/update-profile-readme.yml` workflow once daily (at `00:00 UTC`).
-   - You can also manually trigger the workflow anytime from the **Actions** tab.
-   - Pushing changes to `scripts/**` or `.github/workflows/**` also triggers a rebuild.
-2. **Checkout & Environment:**
-   - Runner checks out the repository with full git history.
-   - Node.js 22 is initialized.
-3. **Execution:**
-   - `node scripts/update_readme.js` runs with `GITHUB_TOKEN`.
-   - Fetches profile metadata from `GET /users/sagarkrjha`.
-   - Fetches repository list from `GET /users/sagarkrjha/repos`.
-   - Inspects languages, releases, tags, stars, and commit timestamps for public repos.
-4. **Change Detection:**
-   - Compares the newly generated Markdown against the existing `README.md`.
-   - If no structural, statistical, or content differences exist, the script reports:
-     `✅ README.md is already up to date. No profile or repository changes detected.`
-     and exits cleanly.
-5. **Atomic Commit & Push:**
-   - If changes are detected, git stages `README.md`, creates a commit signed by `github-actions[bot]`, and pushes it to `main`.
-   - The commit message includes `[skip ci]` to ensure no secondary build is spawned.
+### 1. Triggers
+The workflow executes under three conditions:
+- **Scheduled Cron:** Daily at `00:00 UTC` (`0 0 * * *`).
+- **Manual Trigger:** On-demand via GitHub's `workflow_dispatch` button.
+- **Code Pushes:** Automatically when modifications are pushed to `updater/**`, `config.json`, `package.json`, or `.github/workflows/**`.
+
+### 2. Execution Pipeline
+1. **Runner Provisioning:** Spins up `ubuntu-latest`.
+2. **Toolchain & Cache:** Sets up the stable Rust toolchain (`dtolnay/rust-toolchain@stable`) and restores cargo build cache (`Swatinem/rust-cache@v2`).
+3. **Execution:** Runs `cargo run --manifest-path updater/Cargo.toml --release` with `GITHUB_TOKEN`.
+4. **Data Acquisition:**
+   - Queries `api.github.com/users/sagarkrjha` for bio, repository counts, followers, etc.
+   - Queries `api.github.com/users/sagarkrjha/repos` for public repositories, languages, and pushed dates.
+   - Queries `api.github.com/graphql` for user's pinned repositories to display as Featured Projects.
+   - Fetches individual repository languages breakdown and release information.
+   - Fetches LeetCode statistics and contest rankings via LeetCode's GraphQL API.
+   - Scrapes public lines of code, streak counters, and contribution metrics.
+5. **Change Evaluation:**
+   - Strips the timestamp and evaluates exact equivalence between the existing and newly generated `README.md`.
+   - If identical: exits cleanly with no file writes and no git commit.
+   - If changed: writes the new `README.md`.
+6. **Markdown Verification:** Ensures pure Markdown compliance with zero unescaped or broken HTML tags.
+7. **Automated Commit:** If changes were written, commits as `github-actions[bot]` with message `chore: update profile README [skip ci]` and pushes back to `main`.
 
 ---
 
 ## ⚙️ Configuration Guide (`config.json`)
 
-All customizable options reside in [`scripts/config.json`](file:///C:/Users/sagar/dev/portfolio/sagarkrjha/scripts/config.json). You can modify your profile details, links, or section toggles without touching any JavaScript code.
+All customizable aspects are controlled from [`config.json`](file:///home/senku/dev/portfolio/sagarkrjha/config.json).
 
-```jsonc
+```json
 {
   "profile": {
     "username": "sagarkrjha",
     "name": "Sagar Kumar Jha",
-    "role": "Aspiring Software Engineer",
-    "tagline": "Aspiring Software Engineer · Systems & Developer Tooling",
-    "bio": "I build robust systems, developer tools, and low-level software from first principles...",
-    "location": "",  // Leave empty string "" to hide location from README
+    "role": "Software Engineer",
+    "tagline": "Software Engineer · Systems & Developer Tooling",
+    "bio": "I build robust systems...",
+    "location": "Delhi, India",
     "socials": {
-      "github": "https://github.com/sagarkrjha",
       "linkedin": "https://linkedin.com/in/devsagarkumarjha",
       "twitter": "https://x.com/devsagarkrjha",
       "leetcode": "https://leetcode.com/u/devsagarkrjha/",
-      "instagram": "", // Leave empty string "" to hide from README
-      "youtube": "",   // Leave empty string "" to hide from README
-      "discord": "",   // Leave empty string "" to hide from README
-      "email": ""      // Leave empty string "" to hide email from README
+      "discord": "https://discord.com/users/894502933801107476"
     }
   },
   "sections": {
@@ -137,56 +141,39 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
     "about": true,
     "currently_building": true,
     "featured_projects": true,
+    "other_projects": true,
     "tech_stack": true,
     "metrics": true,
-    "leetcode": false, // Toggle standalone Algorithmic & LeetCode Metrics section
+    "leetcode": true,
     "achievements": true,
     "interests": true,
     "footer": true
   },
   "featured_projects": {
     "max_count": 6,
-    "pinned": ["minigit"],
+    "pinned": ["minigit", "codeshelf", "level-db-cpp"],
     "exclude": ["sagarkrjha"],
     "include_forks": false,
     "custom_metadata": {
       "minigit": {
         "title": "MiniGit",
-        "description": "A Git-compatible version control system implemented from first principles in modern C++20...",
+        "description": "A Git-compatible distributed version control system...",
         "highlights": [
-          "SHA-256 Content-Addressable Storage (CAS)",
-          "DAG-based commit history and branch management",
-          "Two-phase staging index & DP diff engine",
-          "Automated cross-platform releases for Windows, Linux, and macOS"
+          "Selected for the XERJ Corpus Hub...",
+          "SHA-256 Content-Addressable Storage (CAS)..."
         ]
+      },
+      "codeshelf": {
+        "title": "CodeShelf",
+        "description": "Developer snippet and knowledge management system...",
+        "highlights": [...]
+      },
+      "level-db-cpp": {
+        "title": "LevelDB C++ Implementation",
+        "description": "Complete, clean, end-to-end modern C++20 implementation of the LSM-tree storage engine...",
+        "highlights": [...]
       }
     }
-  },
-  "display_options": {
-    "format": "text",            // "text" for clean monochrome Markdown tables, or "cards" for SVG cards
-    "stats_base_url": "https://github-readme-stats-fast.vercel.app", // Endpoint for stats & language cards
-    "stats_theme": "tokyonight", // Theme for GitHub stats card (when format is "cards")
-    "hide_stats_border": true,
-    "show_stats_card": false,
-    "show_streak_card": false,
-    "show_langs_card": false,
-    "show_loc_card": false,
-    "show_contributions_graph": false,
-    "show_table": false,
-    "show_loc": true,            // Display Total Lines of Code in text metrics table
-    "show_contributions": true   // Display Public Contributions in text metrics table
-  },
-  "leetcode": {
-    "username": "devsagarkrjha", // LeetCode handle
-    "format": "text",            // "text" for monochrome Markdown table, or "cards" for SVG card
-    "theme": "dark",             // Theme for LeetCode stats card (when format is "cards")
-    "font": "Inter",             // Font family for LeetCode card
-    "ext": "heatmap",            // Card extension (e.g. heatmap, activity)
-    "show_table": false,
-    "show_card": false,
-    "show_rating": false,        // Toggle contest rating visibility
-    "show_badge": false,         // Toggle contest badge visibility (e.g. Guardian/Knight)
-    "show_achievements": false   // Toggle LeetCode highlight in Milestones & Achievements
   }
 }
 ```
@@ -195,19 +182,19 @@ All customizable options reside in [`scripts/config.json`](file:///C:/Users/saga
 
 ## 🖱️ Manual Workflow Triggering
 
-Whenever you create a new repository, publish a release, or update your bio:
+Whenever you pin a new repository on your profile, publish a release, or update your bio:
 
 1. Open `https://github.com/sagarkrjha/sagarkrjha/actions`.
-2. In the left sidebar, click **Update Profile README**.
+2. In the left sidebar, click **Generate & Sync README**.
 3. Click the **Run workflow** dropdown on the right side.
 4. Select branch `main` and click the green **Run workflow** button.
-5. The workflow will finish in approximately 10–15 seconds and update your README if new data exists.
+5. The workflow compiles and executes the Rust updater in ~15–20 seconds (leveraging cached build dependencies) and updates your README automatically.
 
 ---
 
 ## ⏰ Changing Update Frequency
 
-The schedule is controlled by the cron expression in [`.github/workflows/update-profile-readme.yml`](file:///C:/Users/sagar/dev/portfolio/sagarkrjha/.github/workflows/update-profile-readme.yml):
+The schedule is controlled by the cron expression in [`.github/workflows/update-profile-readme.yml`](file:///home/senku/dev/portfolio/sagarkrjha/.github/workflows/update-profile-readme.yml):
 
 ```yaml
 on:
@@ -215,21 +202,18 @@ on:
     - cron: '0 0 * * *' # Every day at 00:00 UTC
 ```
 
-Common schedules you can choose from:
+Common schedules:
 - **Every 12 Hours:** `- cron: '0 */12 * * *'`
 - **Every 6 Hours:** `- cron: '0 */6 * * *'`
 - **Once Weekly (Sunday midnight):** `- cron: '0 0 * * 0'`
 - **Twice Daily (00:00 & 12:00 UTC):** `- cron: '0 0,12 * * *'`
-
-> [!TIP]
-> A frequency of once every 12 to 24 hours is optimal. It keeps your stats fresh while preserving your GitHub API quota.
 
 ---
 
 ## 🧩 Adding, Removing, or Customizing Sections
 
 ### 1. Disabling a Section
-To temporarily hide a section, change its boolean flag to `false` in `scripts/config.json`:
+To temporarily hide a section, change its boolean flag to `false` in `config.json`:
 ```json
 "sections": {
   "interests": false,
@@ -237,52 +221,50 @@ To temporarily hide a section, change its boolean flag to `false` in `scripts/co
 }
 ```
 
-### 2. Pinning a New Project
-To display another project at the top of **Featured Projects**:
-1. Add its repository name to `"pinned"`:
-   ```json
-   "pinned": ["minigit", "new-project-name"]
-   ```
-2. Optionally add custom highlights under `"custom_metadata"`:
-   ```json
-   "new-project-name": {
-     "title": "My Awesome Tool",
-     "description": "High performance indexing service.",
-     "highlights": [
-       "Sub-millisecond query latency",
-       "Zero memory leaks"
-     ]
-   }
-   ```
-
-### 3. Hiding or Adding Social Profiles
-To show Instagram or YouTube, simply add the URL string in `"socials"`:
-```json
-"socials": {
-  "youtube": "https://youtube.com/@devsagarkrjha",
-  "instagram": "https://instagram.com/devsagarkrjha"
-}
-```
-Setting any profile to `""` automatically omits its badge.
+### 2. Pinning Repositories (Featured Projects)
+- **Automatic:** When you pin or unpin any repository on your GitHub profile, the Rust updater automatically queries GraphQL in CI and renders your pinned repositories under **Featured Projects** in the exact order you arranged them.
+- **Custom Highlights:** To add custom bullet points for any pinned repository, simply add an entry under `custom_metadata` in `config.json`:
+  ```json
+  "my-repo": {
+    "title": "Custom Display Title",
+    "description": "Optional description override.",
+    "highlights": [
+      "Custom bullet point 1",
+      "Custom bullet point 2"
+    ]
+  }
+  ```
 
 ---
 
 ## 💻 Local Testing & Development
 
-You can run and test the profile generator locally on your machine at any time using npm:
+You can run and test the profile generator locally on your machine at any time using Cargo or npm:
 
 ```bash
 # 1. Preview changes without writing to README.md
+cargo run --manifest-path updater/Cargo.toml -- --dry-run
+# or
 npm run dry-run
 
 # 2. Check whether the current README is up-to-date (returns exit code 0 if identical, 1 if diff)
+cargo run --manifest-path updater/Cargo.toml -- --check
+# or
 npm run check
 
 # 3. Generate and update README.md locally
+cargo run --manifest-path updater/Cargo.toml --release
+# or
 npm run build
 
 # 4. Force update README.md regardless of identical content
-node scripts/update_readme.js --force
+cargo run --manifest-path updater/Cargo.toml -- --force
+```
+
+### Testing with Authenticated Rate Limits Locally
+If you hit GitHub's unauthenticated IP rate limit locally, pass your token:
+```bash
+GITHUB_TOKEN=$(gh auth token) cargo run --manifest-path updater/Cargo.toml -- --dry-run
 ```
 
 ---
@@ -295,17 +277,9 @@ node scripts/update_readme.js --force
 
 ### Q2: Why did the workflow run but not commit any changes?
 - **Root Cause:** The change detection system determined that your GitHub metrics, stars, and repos have not changed since the last run.
-- **Verification:** Check the Actions log. You should see `✅ README.md is already up to date. No commit necessary.`
+- **Verification:** Check the Actions log. You should see `✅ README.md is already up to date. No profile or repository changes detected.`
 
-### Q3: How do I test with an authenticated token locally?
-- Run PowerShell:
-  ```powershell
-  $env:GITHUB_TOKEN = "your_github_pat_here"
-  node scripts/update_readme.js
-  ```
-- The script automatically detects `process.env.GITHUB_TOKEN`.
-
-### Q4: How does the system avoid infinite commit loops?
-1. The GitHub Actions workflow specifies `paths` to only trigger on `scripts/**` or `.github/workflows/**`. Changes to `README.md` do not trigger pushes.
+### Q3: How does the system avoid infinite commit loops?
+1. The GitHub Actions workflow specifies `paths` to only trigger on `updater/**`, `config.json`, etc. Changes to `README.md` do not trigger pushes.
 2. The commit message includes `[skip ci]`.
-3. The generator performs intelligent normalization and equality checks.
+3. The generator performs intelligent timestamp-agnostic equality checks.

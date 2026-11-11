@@ -1,7 +1,7 @@
 # Sagar Kumar Jha
 **Software Engineer · Systems & Developer Tooling** · *Delhi, India*
 
-[LinkedIn](https://linkedin.com/in/devsagarkumarjha) · [X / Twitter](https://x.com/devsagarkrjha) · [LeetCode](https://leetcode.com/u/devsagarkrjha/) · [Discord](https://discord.com/users/894502933801107476) · [Resume](https://raw.githubusercontent.com/sagarkrjha/sagarkrjha/main/assets/sagar-resume.pdf)
+[LinkedIn](https://linkedin.com/in/devsagarkumarjha) · [X / Twitter](https://x.com/devsagarkrjha) · [LeetCode](https://leetcode.com/u/devsagarkrjha/) · [Discord](https://discord.com/users/894502933801107476)
 
 ## Summary
 
@@ -44,10 +44,19 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 - Automatic revision snapshotting with visual Myers diff rollback and compressed JSON exports
 - Cross-platform releases across Windows (NSIS), macOS (DMG), Linux (AppImage/deb), and VS Code Marketplace
 
+### [LevelDB C++ Implementation](https://github.com/sagarkrjha/level-db-cpp)
+*`C++` · ★ 1 · [Repository](https://github.com/sagarkrjha/level-db-cpp)*
+
+Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Merge-tree (LSM-tree) storage engine inspired by Google's LevelDB.
+
+- Write-Ahead Log (WAL) with 32 KB chunked physical records and CRC32 checksum data integrity
+- Lock-free concurrent SkipList MemTable with custom memory Arena allocator and release/acquire atomics
+- SSTable storage hierarchy with delta prefix compression, restart points, and double-hashing Bloom filters
+- Multi-level compaction pipeline with VersionSet / MANIFEST delta journaling and tombstone purging safety
+
 ## Additional Projects
 
 - **[cp-workspace](https://github.com/sagarkrjha/cp-workspace)** — `C++` · ⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
-- **[level-db-cpp](https://github.com/sagarkrjha/level-db-cpp)** — `C++` · A fast, lightweight C++20 LSM-tree storage engine inspired by Google's LevelDB
 - **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
@@ -61,10 +70,10 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `9` | **Total Stars Earned** | `16` |
-| **Public Contributions** | `540` | **Total Commits** | `263` |
-| **Pull Requests Opened** | `29` | **Current Streak** | `0 days` |
-| **Longest Streak** | `22 days` | **Followers** | `29` |
-| **Following** | `22` |  |  |
+| **Total Lines of Code** | `88,393` | **Public Contributions** | `540` |
+| **Total Commits** | `263` | **Pull Requests Opened** | `29` |
+| **Current Streak** | `0 days` | **Longest Streak** | `22 days` |
+| **Followers** | `29` | **Following** | `22` |
 
 - **Codebase Composition:** `C++` (52.3%) · `TypeScript` (43.5%) · `MDX` (1.3%) · `CSS` (1.2%) · `CMake` (0.5%)
 
@@ -86,4 +95,4 @@ Developer snippet and knowledge management system spanning desktop, VS Code exte
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-11 12:18 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-11 13:14 UTC`*

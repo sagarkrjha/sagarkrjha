@@ -8,16 +8,16 @@ on:
   # Allow manual trigger from the GitHub Actions tab
   workflow_dispatch:
 
-  # Run automatically whenever scripts or workflow files are updated
+  # Run automatically whenever updater, config, or workflow files are updated
   push:
     branches:
       - main
       - master
     paths:
-      - 'scripts/**'
+      - 'updater/**'
+      - 'config.json'
       - 'package.json'
       - '.github/workflows/**'
-      - 'assets/**'
 
 permissions:
   contents: write
@@ -38,16 +38,19 @@ jobs:
           # Fetch full history to ensure clean commit and push
           fetch-depth: 0
 
-      - name: Setup Node.js Runtime
-        uses: actions/setup-node@v4
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
         with:
-          node-version: 22
+          workspaces: "updater -> target"
 
       - name: Generate Updated README
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          node scripts/update_readme.js
+          cargo run --manifest-path updater/Cargo.toml --release
 
       - name: Verify Markdown Format & Cleanliness
         run: |
