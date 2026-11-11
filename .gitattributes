@@ -1,0 +1,8 @@
+# Linguist language overrides
+# Explicitly identify Rust code
+updater/src/main.rs linguist-detectable=true linguist-language=Rust
+
+# Treat documentation, manifests and config as documentation / non-code
+*.md linguist-documentation=true
+*.json linguist-documentation=true
+Cargo.lock linguist-documentation=true
