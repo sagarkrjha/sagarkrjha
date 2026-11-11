@@ -29,11 +29,11 @@ concurrency:
 jobs:
   update-readme:
     name: Generate & Sync README
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Fetch full history to ensure clean commit and push
           fetch-depth: 0
