@@ -71,12 +71,12 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `9` | **Total Stars Earned** | `16` |
-| **Total Lines of Code** | `88,466` | **Public Contributions** | `563` |
-| **Total Commits** | `282` | **Pull Requests Opened** | `33` |
+| **Total Lines of Code** | `89,304` | **Public Contributions** | `572` |
+| **Total Commits** | `288` | **Pull Requests Opened** | `36` |
 | **Current Streak** | `2 days` | **Longest Streak** | `22 days` |
 | **Followers** | `29` | **Following** | `22` |
 
-- **Codebase Composition:** `C++` (52.3%) · `TypeScript` (43.5%) · `MDX` (1.3%) · `CSS` (1.2%) · `CMake` (0.5%)
+- **Codebase Composition:** `C++` (50.9%) · `TypeScript` (44.0%) · `MDX` (1.3%) · `CSS` (1.2%) · `Rust` (1.1%)
 
 ## Problem Solving & Algorithms
 
@@ -96,4 +96,4 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-12 05:12 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-13 04:56 UTC`*
