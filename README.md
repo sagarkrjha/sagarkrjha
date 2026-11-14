@@ -55,9 +55,13 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 - SSTable storage hierarchy with delta prefix compression, restart points, and double-hashing Bloom filters
 - Multi-level compaction pipeline with VersionSet / MANIFEST delta journaling and tombstone purging safety
 
+### [cp-workspace](https://github.com/sagarkrjha/cp-workspace)
+*`C++` · ★ 2 · [Repository](https://github.com/sagarkrjha/cp-workspace)*
+
+⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
+
 ## Additional Projects
 
-- **[cp-workspace](https://github.com/sagarkrjha/cp-workspace)** — `C++` · ⚡ Lightweight, cross-platform competitive programming setup for C++ in VS Code with auto-compiler detection and fast I/O
 - **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
@@ -71,12 +75,11 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `9` | **Total Stars Earned** | `16` |
-| **Total Lines of Code** | `89,304` | **Public Contributions** | `572` |
-| **Total Commits** | `288` | **Pull Requests Opened** | `36` |
-| **Current Streak** | `2 days` | **Longest Streak** | `22 days` |
+| **Total Lines of Code** | `89,662` | **Public Contributions** | `577` |
+| **Current Streak** | `3 days` | **Longest Streak** | `22 days` |
 | **Followers** | `29` | **Following** | `22` |
 
-- **Codebase Composition:** `C++` (50.9%) · `TypeScript` (44.0%) · `MDX` (1.3%) · `CSS` (1.2%) · `Rust` (1.1%)
+- **Codebase Composition:** `C++` (50.4%) · `TypeScript` (44.6%) · `MDX` (1.3%) · `CSS` (1.2%) · `Rust` (1.1%)
 
 ## Problem Solving & Algorithms
 
@@ -96,4 +99,4 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-13 04:56 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-14 02:41 UTC`*
