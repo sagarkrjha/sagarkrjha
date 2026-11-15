@@ -62,7 +62,7 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ## Additional Projects
 
-- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `TypeScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
+- **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `JavaScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
@@ -75,11 +75,12 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `9` | **Total Stars Earned** | `16` |
-| **Total Lines of Code** | `89,662` | **Public Contributions** | `579` |
+| **Total Lines of Code** | `184,294` | **Public Contributions** | `588` |
+| **Total Commits** | `296` | **Pull Requests Opened** | `44` |
 | **Current Streak** | `4 days` | **Longest Streak** | `22 days` |
 | **Followers** | `29` | **Following** | `22` |
 
-- **Codebase Composition:** `C++` (50.4%) · `TypeScript` (44.6%) · `MDX` (1.3%) · `CSS` (1.2%) · `Rust` (1.1%)
+- **Codebase Composition:** `JavaScript` (41.7%) · `HTML` (19.5%) · `TypeScript` (15.4%) · `C++` (14.4%) · `CSS` (8.0%)
 
 ## Problem Solving & Algorithms
 
@@ -99,4 +100,4 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-14 04:49 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-15 04:41 UTC`*
