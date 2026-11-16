@@ -75,12 +75,12 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
 | **Public Repositories** | `9` | **Total Stars Earned** | `16` |
-| **Total Lines of Code** | `184,294` | **Public Contributions** | `588` |
-| **Total Commits** | `296` | **Pull Requests Opened** | `44` |
-| **Current Streak** | `4 days` | **Longest Streak** | `22 days` |
+| **Total Lines of Code** | `206,259` | **Public Contributions** | `597` |
+| **Total Commits** | `302` | **Pull Requests Opened** | `47` |
+| **Current Streak** | `5 days` | **Longest Streak** | `22 days` |
 | **Followers** | `29` | **Following** | `22` |
 
-- **Codebase Composition:** `JavaScript` (41.7%) · `HTML` (19.5%) · `TypeScript` (15.4%) · `C++` (14.4%) · `CSS` (8.0%)
+- **Codebase Composition:** `JavaScript` (50.5%) · `HTML` (16.5%) · `TypeScript` (13.0%) · `C++` (12.2%) · `CSS` (6.8%)
 
 ## Problem Solving & Algorithms
 
@@ -100,4 +100,4 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-15 04:41 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-16 04:37 UTC`*
