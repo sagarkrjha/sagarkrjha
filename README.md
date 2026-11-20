@@ -13,7 +13,7 @@ I build robust systems, developer tools, and storage engines from first principl
 
 ## Technical Skills
 
-- **Languages:** `C++20`, `C`, `Rust`, `TypeScript`, `JavaScript`, `Go`, `Python`
+- **Languages:** `C++20`, `C`, `Rust`, `TypeScript`, `JavaScript`, `Go`, `Python`, `Bash / Shell`
 - **Frameworks & Full-Stack:** `Next.js (App Router)`, `React 19`, `Electron`, `Tailwind CSS v4`, `Node.js`
 - **Systems & Storage Tooling:** `CMake`, `OpenSSL (SHA-256 / CRC32)`, `Zlib`, `Git Internals`, `Linux / POSIX`, `Windows API`
 - **DevOps & Infrastructure:** `GitHub Actions`, `Docker`, `GCC / Clang / MSVC`
@@ -63,6 +63,7 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 ## Additional Projects
 
 - **[Config-Driven Portfolio](https://github.com/sagarkrjha/portfolio-web)** — `JavaScript` · High-performance, 100% config-driven developer portfolio and technical blog built with Next.js 16 (App Router), React 19, and Tailwind CSS v4. Features an interactive terminal CLI, Mermaid diagram canvas modal, and automated GitHub CI sync.
+- **[silex](https://github.com/sagarkrjha/silex)** — `TypeScript` · Silex - Native Rust-powered, framework-independent UI component engine and design system
 - **[Next.js MDX Starter Template](https://github.com/sagarkrjha/next-mdx-starter)** — `TypeScript` · Production-ready, reusable full-stack starter template built with Next.js 16, React 19, Tailwind CSS v4, Biome, shadcn/ui, Radix UI, and first-class @next/mdx support.
 
 ## Current Focus
@@ -74,13 +75,13 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 | Metric | Value | Metric | Value |
 | :--- | :---: | :--- | :---: |
-| **Public Repositories** | `9` | **Total Stars Earned** | `16` |
-| **Total Lines of Code** | `206,259` | **Public Contributions** | `597` |
-| **Total Commits** | `302` | **Pull Requests Opened** | `47` |
-| **Current Streak** | `0 days` | **Longest Streak** | `22 days` |
+| **Public Repositories** | `10` | **Total Stars Earned** | `16` |
+| **Total Lines of Code** | `209,059` | **Public Contributions** | `614` |
+| **Total Commits** | `318` | **Pull Requests Opened** | `47` |
+| **Current Streak** | `1 days` | **Longest Streak** | `15 days` |
 | **Followers** | `28` | **Following** | `6` |
 
-- **Codebase Composition:** `JavaScript` (50.5%) · `HTML` (16.5%) · `TypeScript` (13.0%) · `C++` (12.2%) · `CSS` (6.8%)
+- **Codebase Composition:** `JavaScript` (49.6%) · `HTML` (16.2%) · `TypeScript` (14.0%) · `C++` (12.0%) · `CSS` (6.7%)
 
 ## Problem Solving & Algorithms
 
@@ -100,4 +101,4 @@ Complete, clean, end-to-end modern C++20 implementation of the Log-Structured Me
 
 ---
 
-*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-18 05:48 UTC`*
+*Profile generated dynamically via [GitHub Actions](https://github.com/sagarkrjha/sagarkrjha/actions) · Last synced: `2026-11-20 05:37 UTC`*
